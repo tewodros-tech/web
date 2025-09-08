@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>About Us - Hayimi Movement</title>
+
+  <!-- Fonts and Icons -->
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+
+  <!-- Inline Styles for Consistency -->
+  <style>
+    body {
+      font-family: 'Montserrat', sans-serif;
+      margin: 0;
+      background-color: #f9f9f9;
+      color: #333;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    /* Navbar */
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 2rem;
+      background-color: #fff;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .logo img {
+      height: 50px;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1.5rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      font-weight: 600;
+      transition: color 0.3s ease;
+    }
+
+    .nav-links a:hover,
+    .nav-links a.active {
+      color: #0077b6;
+    }
+
+    .donate-btn {
+      background-color: #ff6600;
+      color: white;
+      padding: 0.5rem 1rem;
+      border-radius: 5px;
+      font-weight: bold;
+      transition: background-color 0.3s ease;
+    }
+
+    .donate-btn:hover {
+      background-color: #d9480f;
+    }
+
+    /* Hero Banner */
+    .hero-about {
+      background: linear-gradient(to right, #ff6600, #ff9966);
+      color: white;
+      padding: 4rem 2rem;
+      text-align: center;
+    }
+
+    .hero-about h1 {
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+    }
+
+    .hero-about p {
+      font-size: 1.2rem;
+      max-width: 700px;
+      margin: 0 auto;
+    }
+
+    /* About Content */
+    .about-section {
+      padding: 3rem 2rem;
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+
+    .about-section h2 {
+      color: #ff6600;
+      font-size: 1.8rem;
+      margin-top: 2rem;
+    }
+
+    .about-section p {
+      margin: 1rem 0;
+      line-height: 1.6;
+      font-size: 1rem;
+    }
+
+    /* Footer */
+    .footer {
+      background-color: #333;
+      color: white;
+      text-align: center;
+      padding: 1rem;
+      font-size: 0.9rem;
+    }
+
+    .social-icons {
+      margin-top: 0.5rem;
+    }
+
+    .social-icons a {
+      color: white;
+      margin: 0 0.5rem;
+      font-size: 1.2rem;
+    }
+
+    /* Mobile Menu Toggle */
+    .menu-toggle {
+      display: none;
+      font-size: 1.5rem;
+      background: none;
+      border: none;
+      cursor: pointer;
+    }
+
+    @media (max-width: 768px) {
+      .nav-links {
+        display: none;
+        flex-direction: column;
+        gap: 1rem;
+        margin-top: 1rem;
+      }
+
+      .nav-links.show {
+        display: flex;
+      }
+
+      .menu-toggle {
+        display: block;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <header>
+    <nav class="navbar">
+      <div class="logo"><a href="index.html"><img src="Logo.jpg" alt="Hayimi Logo" /></a></div>
+      <button class="menu-toggle" aria-label="Toggle Menu">☰</button>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html" class="active">About</a></li>
+        <li><a href="programs.html">Programs</a></li>
+        <li><a href="gallery.html">Gallery</a></li>
+        <li><a href="contact.html">Contact</a></li>
+        <li><a href="donation.html" class="donate-btn">DONATE</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero-about">
+    <h1>About Hayimi Movement</h1>
+    <p>Spreading love and hope to families in need—through compassion, resilience, and community-driven action.</p>
+  </section>
+
+  <!-- Mission & Impact -->
+  <section class="about-section">
+    <h2>Our Mission</h2>
+    <p>Hayimi Movement is a grassroots initiative rooted in Ethiopia, committed to empowering communities through education, health, and humanitarian support. We believe in the power of local leadership, cultural preservation, and inclusive development.</p>
+
+    <h2>What We Do</h2>
+    <p><strong>Supporting Internally Displaced People and Those with Disabilities:</strong> We’ve witnessed the compassion of people from Ethiopia, North America, and beyond. Communities in crisis are not just given aid—they’re welcomed into thriving communities. We stand with them, honoring their feelings and hope as essential.</p>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <p>&copy; 2025 Hayimi Movement. All rights reserved.</p>
+    <div class="social-icons">
+      <a href="#"><i class="fab fa-facebook-f"></i></a>
+      <a href="#"><i class="fab fa-twitter"></i></a>
+      <a href="#"><i class="fab fa-instagram"></i></a>
+      <a href="#"><i class="fab fa-linkedin-in"></i></a>
+    </div>
+  </footer>
+
+  <!-- Mobile Menu Toggle Script -->
+  <script>
+    const toggle = document.querySelector('.menu-toggle');
+    const navLinks = document.querySelector('.nav-links');
+    toggle.addEventListener('click', () => {
+      navLinks.classList.toggle('show');
+    });
+  </script>
+</body>
+</html>
+

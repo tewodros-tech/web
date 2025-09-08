@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Gallery - Hayimi Movement</title>
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet" />
+
+  <!-- Styles -->
+  <style>
+    /* Reset and Base Styles */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Montserrat', sans-serif;
+      background-color: #f9f9f9;
+      color: #333;
+    }
+
+    /* Header Styles */
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 2rem;
+      background-color: #002855; /* Deep blue */
+      color: white;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .logo img {
+      height: 40px;
+      width: auto;
+    }
+
+    .logo span {
+      font-size: 1.2rem;
+      font-weight: bold;
+      color: white;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: white;
+      font-weight: 600;
+      transition: color 0.3s ease;
+    }
+
+    .nav-links a:hover,
+    .nav-links a.active {
+      color: #ff6600;
+    }
+
+    .donate-btn {
+      background-color: #ff6600;
+      color: white;
+      padding: 0.5rem 1rem;
+      border: none;
+      border-radius: 5px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    .donate-btn:hover {
+      background-color: #e65c00;
+    }
+
+    /* Page Content */
+    .page-content {
+      padding: 2rem;
+      text-align: center;
+    }
+
+    .page-content h1 {
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+      color: #ff6600;
+    }
+
+    /* Gallery Grid */
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1rem;
+      margin-top: 2rem;
+    }
+
+    .gallery-grid img {
+      width: 100%;
+      height: auto;
+      border-radius: 10px;
+      object-fit: cover;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    }
+
+    .gallery-grid img:hover {
+      transform: scale(1.05);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+    }
+
+    /* Footer */
+    footer {
+      background-color: #333;
+      color: white;
+      text-align: center;
+      padding: 1rem;
+      font-size: 0.9rem;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .navbar {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .nav-links {
+        flex-direction: column;
+        gap: 1rem;
+        margin: 1rem 0;
+      }
+
+      .page-content h1 {
+        font-size: 2rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navigation Bar -->
+  <nav class="navbar">
+    <!-- Logo -->
+    <div class="logo">
+      <img src="logo.jpg" alt="Hayimi Logo" />
+      <span>Hayimi Movement</span>
+    </div>
+
+    <!-- Navigation Links -->
+    <ul class="nav-links">
+      <li><a href="about.html">About</a></li>
+      <li><a href="programs.html">Programs</a></li>
+      <li><a href="gallery.html" class="active">Gallery</a></li>
+      <li><a href="events.html">Events</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+
+    <!-- Donate Button -->
+    <button class="donate-btn">DONATE</button>
+  </nav>
+
+  <!-- Main Content -->
+  <main class="page-content">
+    <h1>Gallery</h1>
+    <div class="gallery-grid">
+      <!-- Sample Images -->
+      <img src="images/photo_1.jpg" alt="Hayimi photo 1" loading="lazy" />
+      <img src="images/photo_2.jpg" alt="Hayimi photo 2" loading="lazy" />
+      <img src="images/photo_3.jpg" alt="Hayimi photo 3" loading="lazy" />
+      <img src="images/photo_4.jpg" alt="Hayimi photo 4" loading="lazy" />
+      <img src="images/photo_5.jpg" alt="Hayimi photo 5" loading="lazy" />
+      <!-- Add more as needed -->
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <p>&copy; 2025 Hayimi Movement. All rights reserved.</p>
+  </footer>
+
+</body>
+</html>

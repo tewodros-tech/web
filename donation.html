@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Donate | Hayimi Movement</title>
+
+  <!-- Fonts & Styles -->
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans&family=Poppins:wght@600&display=swap" rel="stylesheet" />
+  <style>
+    body {
+      font-family: 'Open Sans', sans-serif;
+      margin: 0;
+      background-color: #f9f9f9;
+      color: #333;
+    }
+
+    .donation-hero {
+      background: linear-gradient(to right, #ff6600, #ff9966);
+      color: white;
+      text-align: center;
+      padding: 4rem 2rem;
+    }
+
+    .donation-hero h1 {
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+    }
+
+    .donation-hero p {
+      font-size: 1.2rem;
+      max-width: 700px;
+      margin: 0 auto;
+    }
+
+    .donation-options {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2rem;
+      padding: 3rem 2rem;
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+
+    .donation-box {
+      flex: 1 1 45%;
+      background-color: #fff;
+      padding: 2rem;
+      border-radius: 10px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    }
+
+    .donation-box h2 {
+      color: #ff6600;
+      margin-bottom: 1rem;
+    }
+
+    .donation-box p, .donation-box ul {
+      font-size: 1rem;
+      line-height: 1.6;
+    }
+
+    .donation-box ul {
+      padding-left: 1rem;
+    }
+
+    .donation-box a {
+      display: inline-block;
+      margin-top: 1rem;
+      padding: 0.75rem 1.5rem;
+      background-color: #0077b6;
+      color: white;
+      text-decoration: none;
+      border-radius: 5px;
+      font-weight: bold;
+      transition: background-color 0.3s ease;
+    }
+
+    .donation-box a:hover {
+      background-color: #023e8a;
+    }
+
+    @media (max-width: 768px) {
+      .donation-options {
+        flex-direction: column;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Hero Section -->
+  <section class="donation-hero">
+    <h1>Support the Hayimi Movement</h1>
+    <p>Choose your preferred method to contribute and uplift Ethiopian voices.</p>
+  </section>
+
+  <!-- Donation Options -->
+  <section class="donation-options">
+
+    <!-- PayPal -->
+    <div class="donation-box">
+      <h2>Donate via PayPal</h2>
+      <p>Secure and fast. Click below to donate through PayPal.</p>
+      <a href="https://www.paypal.com/donate/?hosted_button_id=YOUR_HOSTED_BUTTON_ID" target="_blank">Donate with PayPal</a>
+    </div>
+
+    <!-- Apple Pay -->
+    <div class="donation-box">
+      <h2>Donate via Apple Pay</h2>
+      <p>Use Apple Pay through our secure Stripe gateway (coming soon) or donate via Apple’s donation partners.</p>
+      <a href="https://support.apple.com/en-us/HT203987" target="_blank">Apple Pay Donation Info</a>
+    </div>
+
+    <!-- Google Pay -->
+    <div class="donation-box">
+      <h2>Donate via Google Pay</h2>
+      <p>Use Google Pay through supported platforms. You can also donate via PayPal using Google Pay.</p>
+      <a href="https://pay.google.com/about/" target="_blank">Google Pay Donation Info</a>
+    </div>
+
+    <!-- Mastercard Donate -->
+    <div class="donation-box">
+      <h2>Donate via Mastercard</h2>
+      <p>Support humanitarian causes through Mastercard’s donation partners.</p>
+      <a href="https://www.mastercard.us/en-us/vision/corp-responsibility/mastercard-donate.html" target="_blank">Donate with Mastercard</a>
+    </div>
+
+    <!-- CBE Mobile -->
+    <div class="donation-box">
+      <h2>Donate via CBE Mobile App</h2>
+      <p>Use the following account details in your CBE Mobile App:</p>
+      <ul>
+        <li><strong>Account Name:</strong> Hayimi Movement</li>
+        <li><strong>Account Number:</strong> 1000123456789</li>
+        <li><strong>Bank:</strong> Commercial Bank of Ethiopia</li>
+      </ul>
+      <p>After payment, please email your receipt to <strong>donate@hayimi.org</strong></p>
+      <a href="https://play.google.com/store/apps/details?id=com.combanketh.mobilebanking" target="_blank">Open CBE App</a>
+    </div>
+
+  </section>
+
+</body>
+</html>

@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Programs - Hayimi Movement</title>
+
+  <!-- Fonts and Icons -->
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+
+  <!-- Inline Styles for Consistency -->
+  <style>
+    body {
+      font-family: 'Montserrat', sans-serif;
+      margin: 0;
+      background-color: #f9f9f9;
+      color: #333;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    /* Navbar */
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 2rem;
+      background-color: #fff;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .logo img {
+      height: 50px;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1.5rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      font-weight: 600;
+      transition: color 0.3s ease;
+    }
+
+    .nav-links a:hover,
+    .nav-links a.active {
+      color: #0077b6;
+    }
+
+    .donate-btn {
+      background-color: #ff6600;
+      color: white;
+      padding: 0.5rem 1rem;
+      border-radius: 5px;
+      font-weight: bold;
+      transition: background-color 0.3s ease;
+    }
+
+    .donate-btn:hover {
+      background-color: #d9480f;
+    }
+
+    /* Programs Section */
+    .programs-section {
+      padding: 3rem 2rem;
+      text-align: center;
+    }
+
+    .programs-section h1 {
+      font-size: 2.5rem;
+      color: #ff6600;
+      margin-bottom: 1rem;
+    }
+
+    .programs-section .intro {
+      font-size: 1.1rem;
+      max-width: 700px;
+      margin: 0 auto 2rem;
+    }
+
+    .program-cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 2rem;
+    }
+
+    .program-card {
+      background: #fff;
+      padding: 2rem;
+      border-radius: 10px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+      transition: transform 0.3s ease;
+    }
+
+    .program-card:hover {
+      transform: translateY(-5px);
+    }
+
+    .program-card .icon {
+      font-size: 2rem;
+      color: #0077b6;
+      margin-bottom: 1rem;
+    }
+
+    .program-card h3 {
+      color: #ff6600;
+      margin-bottom: 0.5rem;
+    }
+
+    .program-card p {
+      font-size: 0.95rem;
+      line-height: 1.6;
+    }
+
+    /* Footer */
+    .footer {
+      background-color: #333;
+      color: white;
+      text-align: center;
+      padding: 1rem;
+      font-size: 0.9rem;
+    }
+
+    .social-icons {
+      margin-top: 0.5rem;
+    }
+
+    .social-icons a {
+      color: white;
+      margin: 0 0.5rem;
+      font-size: 1.2rem;
+    }
+
+    /* Mobile Menu Toggle */
+    .menu-toggle {
+      display: none;
+      font-size: 1.5rem;
+      background: none;
+      border: none;
+      cursor: pointer;
+    }
+
+    @media (max-width: 768px) {
+      .nav-links {
+        display: none;
+        flex-direction: column;
+        gap: 1rem;
+        margin-top: 1rem;
+      }
+
+      .nav-links.show {
+        display: flex;
+      }
+
+      .menu-toggle {
+        display: block;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <header>
+    <nav class="navbar">
+      <div class="logo"><a href="index.html"><img src="Logo.jpg" alt="Hayimi Logo" /></a></div>
+      <button class="menu-toggle" aria-label="Toggle Menu">☰</button>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="programs.html" class="active">Programs</a></li>
+        <li><a href="gallery.html">Gallery</a></li>
+        <li><a href="contact.html">Contact</a></li>
+        <li><a href="donation.html" class="donate-btn">DONATE</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- Programs Section -->
+  <main class="programs-section">
+    <h1>Our Programs</h1>
+    <p class="intro">
+      Real help, where it matters most — education, health, women's leadership, and dignified relief.
+    </p>
+
+    <div class="program-cards">
+      <article class="program-card">
+        <div class="icon"><i class="fas fa-graduation-cap"></i></div>
+        <h3>Education Access</h3>
+        <p>Empowering children in underserved and crisis-affected areas with school supplies, uniforms, and tuition assistance.</p>
+      </article>
+
+      <article class="program-card">
+        <div class="icon"><i class="fas fa-heart-circle-plus"></i></div>
+        <h3>Health Outreach</h3>
+        <p>Bringing essential care to remote and conflict-impacted communities through mobile clinics, health education, and sanitation support.</p>
+      </article>
+
+      <article class="program-card">
+        <div class="icon"><i class="fas fa-person-rays"></i></div>
+        <h3>Women Empowerment</h3>
+        <p>Providing vocational skills, confidence-building workshops, and leadership training to women in marginalized communities.</p>
+      </article>
+
+      <article class="program-card">
+        <div class="icon"><i class="fas fa-hand-holding-heart"></i></div>
+        <h3>Humanitarian Relief & Sustainability</h3>
+        <p>Delivering food support to families in need, distributing emergency supplies, and promoting long-term sustainability projects.</p>
+      </article>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <p>&copy; 2025 Hayimi Movement. All rights reserved.</p>
+    <div class="social-icons">
+      <a href="#"><i class="fab fa-facebook-f"></i></a>
+      <a href="#"><i class="fab fa-twitter"></i></a>
+      <a href="#"><i class="fab fa-instagram"></i></a>
+      <a href="#"><i class="fab fa-linkedin-in"></i></a>
+    </div>
+  </footer>
+
+  <!-- Mobile Menu Toggle Script -->
+  <script>
+    const toggle = document.querySelector('.menu-toggle');
+    const navLinks = document.querySelector('.nav-links');
+    toggle.addEventListener('click', () => {
+      navLinks.classList.toggle('show');
+    });
+  </script>
+</body>
+</html>
