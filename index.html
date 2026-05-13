@@ -3,11 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-    <title>RDG Business Holding | Construction | Import | Coffee</title>
-    <!-- Font Awesome 6 (Free) -->
+    <title>RDG Business Holding | AI-Powered | Construction | Import | Coffee</title>
+    <!-- Font Awesome 6 -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <!-- Google Fonts: modern, clean, professional -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
+    <!-- Google Fonts: Space Grotesk for digital feel -->
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Three.js for 3D background effect -->
+    <script type="importmap">
+        {
+            "imports": {
+                "three": "https://unpkg.com/three@0.128.0/build/three.module.js"
+            }
+        }
+    </script>
     <style>
         * {
             margin: 0;
@@ -16,112 +24,123 @@
         }
 
         body {
-            font-family: 'Inter', sans-serif;
-            background-color: #fefcf7;
-            color: #1e1e2a;
+            font-family: 'Space Grotesk', sans-serif;
+            background-color: #05070a;
+            color: #ededf0;
             scroll-behavior: smooth;
             overflow-x: hidden;
         }
 
-        /* custom scrollbar */
-        ::-webkit-scrollbar {
-            width: 8px;
-        }
-        ::-webkit-scrollbar-track {
-            background: #e9e7e0;
-        }
-        ::-webkit-scrollbar-thumb {
-            background: #b87c4f;
-            border-radius: 10px;
+        /* Canvas 3D background */
+        #bg-canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -2;
+            pointer-events: none;
         }
 
-        /* reusable classes */
+        /* Glass morphism and digital vibe */
+        .glass-panel {
+            background: rgba(10, 15, 25, 0.55);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(80, 180, 200, 0.25);
+            border-radius: 2rem;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.3), 0 0 15px rgba(0,255,255,0.1);
+        }
+
         .container {
-            max-width: 1280px;
+            max-width: 1300px;
             margin: 0 auto;
             padding: 0 32px;
+            position: relative;
+            z-index: 5;
         }
 
         section {
-            padding: 80px 0;
+            padding: 100px 0;
         }
 
         h1, h2, h3 {
-            font-weight: 700;
+            font-weight: 600;
             letter-spacing: -0.02em;
         }
 
         h2 {
-            font-size: 2.5rem;
-            margin-bottom: 1rem;
-            position: relative;
-            display: inline-block;
-        }
-        .section-title {
-            text-align: center;
-            margin-bottom: 3rem;
-        }
-        .section-title h2 {
-            background: linear-gradient(135deg, #2c3e2f, #a56b2f);
+            font-size: 2.8rem;
+            background: linear-gradient(135deg, #ffffff, #6bc5d0, #ffb347);
             background-clip: text;
             -webkit-background-clip: text;
             color: transparent;
+            display: inline-block;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 3.5rem;
         }
         .section-title p {
-            color: #5c5c6b;
+            color: #9aa4bf;
             max-width: 650px;
             margin: 0.8rem auto 0;
             font-size: 1.1rem;
         }
 
-        /* buttons */
+        /* Neon buttons */
         .btn {
             display: inline-flex;
             align-items: center;
-            gap: 10px;
-            background: #b87c4f;
+            gap: 12px;
+            background: linear-gradient(95deg, #0f212e, #1e3a3f);
+            border: 1px solid rgba(0, 255, 255, 0.6);
             color: white;
             padding: 12px 28px;
-            border-radius: 40px;
+            border-radius: 60px;
             font-weight: 600;
             text-decoration: none;
             transition: all 0.3s ease;
-            border: none;
             cursor: pointer;
-            font-size: 0.95rem;
+            box-shadow: 0 0 8px rgba(0,255,255,0.3);
+            letter-spacing: 0.5px;
         }
         .btn i {
             transition: transform 0.2s;
         }
         .btn:hover {
-            background: #9b5e34;
-            transform: translateY(-3px);
-            box-shadow: 0 12px 20px -10px rgba(184,124,79,0.4);
-        }
-        .btn:hover i {
-            transform: translateX(4px);
+            background: linear-gradient(95deg, #1a3a44, #2c5a62);
+            box-shadow: 0 0 18px cyan;
+            transform: translateY(-2px);
+            border-color: cyan;
         }
         .btn-outline {
             background: transparent;
-            border: 2px solid #b87c4f;
-            color: #b87c4f;
+            border: 1px solid #ffb347;
+            box-shadow: none;
         }
         .btn-outline:hover {
-            background: #b87c4f;
-            color: white;
+            background: #ffb34720;
+            box-shadow: 0 0 12px #ffb347;
+            border-color: #ffb347;
         }
 
-        /* header / navbar */
+        /* Navbar with glass */
         .navbar {
             position: fixed;
-            top: 0;
-            width: 100%;
-            background: rgba(255,252,245,0.96);
-            backdrop-filter: blur(12px);
-            box-shadow: 0 4px 20px rgba(0,0,0,0.02);
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 90%;
+            max-width: 1300px;
+            background: rgba(5, 10, 20, 0.75);
+            backdrop-filter: blur(16px);
+            border-radius: 80px;
+            border: 1px solid rgba(0, 255, 255, 0.3);
             z-index: 1000;
-            padding: 1rem 0;
+            padding: 0.8rem 2rem;
             transition: all 0.2s;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.2);
         }
         .nav-container {
             display: flex;
@@ -129,21 +148,26 @@
             justify-content: space-between;
             flex-wrap: wrap;
         }
-        .logo h1 {
-            font-size: 1.7rem;
-            font-weight: 800;
-            background: linear-gradient(125deg, #2b4b2a, #c47a44);
+
+        /* Custom SVG Logo with futuristic look */
+        .custom-logo svg {
+            height: 48px;
+            filter: drop-shadow(0 0 6px cyan);
+        }
+        .logo-text {
+            font-size: 1.5rem;
+            font-weight: 700;
+            background: linear-gradient(125deg, #fff, #6bc5d0);
             background-clip: text;
             -webkit-background-clip: text;
             color: transparent;
+            margin-left: 10px;
         }
-        .logo span {
-            font-size: 0.75rem;
-            font-weight: 400;
-            color: #7f6b4a;
-            display: block;
-            letter-spacing: 1px;
+        .logo-container {
+            display: flex;
+            align-items: center;
         }
+
         .nav-links {
             display: flex;
             gap: 2rem;
@@ -151,17 +175,20 @@
         }
         .nav-links a {
             text-decoration: none;
-            font-weight: 600;
-            color: #2d2e36;
+            font-weight: 500;
+            color: #dfe6f0;
             transition: 0.2s;
+            font-size: 1rem;
         }
         .nav-links a:hover, .nav-links a.active {
-            color: #b87c4f;
+            color: #0ff;
+            text-shadow: 0 0 5px cyan;
         }
         .menu-icon {
             font-size: 1.8rem;
             cursor: pointer;
             display: none;
+            color: cyan;
         }
 
         /* Hero */
@@ -169,19 +196,7 @@
             min-height: 100vh;
             display: flex;
             align-items: center;
-            background: linear-gradient(130deg, #f9f3e8 0%, #ede3d4 100%);
             position: relative;
-            overflow: hidden;
-        }
-        .hero:before {
-            content: "☕";
-            font-size: 28rem;
-            opacity: 0.04;
-            position: absolute;
-            bottom: -60px;
-            right: -40px;
-            font-family: monospace;
-            pointer-events: none;
         }
         .hero-grid {
             display: flex;
@@ -193,217 +208,164 @@
             flex: 1.2;
         }
         .hero-badge {
-            background: #e9dacb;
+            background: rgba(0,255,255,0.15);
+            backdrop-filter: blur(8px);
             display: inline-block;
-            padding: 6px 16px;
+            padding: 6px 18px;
             border-radius: 60px;
             font-size: 0.8rem;
-            font-weight: 600;
-            color: #9b5e34;
+            font-weight: 500;
+            color: #0ff;
             margin-bottom: 1.2rem;
+            border: 1px solid cyan;
         }
         .hero-content h1 {
-            font-size: 3.5rem;
+            font-size: 3.8rem;
             line-height: 1.2;
             margin-bottom: 1.2rem;
         }
         .hero-highlight {
-            color: #b87c4f;
-        }
-        .hero-desc {
-            font-size: 1.15rem;
-            color: #3f3f4a;
-            margin-bottom: 2rem;
-            max-width: 550px;
+            color: #ffb347;
+            text-shadow: 0 0 6px #ffb347;
         }
         .hero-stats {
             display: flex;
             gap: 2rem;
             margin-top: 2rem;
         }
-        .stat {
+        .stat-number {
             font-weight: 800;
-            font-size: 1.8rem;
-            color: #2c3e2f;
-        }
-        .stat-label {
-            font-size: 0.8rem;
-            font-weight: 500;
-            color: #666;
-        }
-        .hero-image {
-            flex: 0.9;
-            text-align: center;
-        }
-        .hero-image img {
-            max-width: 100%;
-            filter: drop-shadow(0 20px 25px -12px rgba(0,0,0,0.2));
-            animation: float 5s infinite ease;
-        }
-        @keyframes float {
-            0% { transform: translateY(0px);}
-            50% { transform: translateY(-12px);}
-            100% { transform: translateY(0px);}
+            font-size: 2rem;
+            color: #0ff;
         }
 
-        /* Cards */
+        /* Cards holographic */
         .cards-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
             gap: 2rem;
-            margin-top: 1rem;
         }
         .business-card {
-            background: white;
-            border-radius: 32px;
-            padding: 2rem 1.8rem;
-            box-shadow: 0 18px 35px -12px rgba(0,0,0,0.05);
+            background: rgba(15, 25, 40, 0.6);
+            backdrop-filter: blur(12px);
+            border-radius: 2rem;
+            padding: 2rem;
+            border: 1px solid rgba(0,255,255,0.3);
             transition: all 0.3s;
-            border: 1px solid rgba(184,124,79,0.15);
         }
         .business-card:hover {
             transform: translateY(-8px);
-            box-shadow: 0 28px 40px -15px rgba(0,0,0,0.12);
-            border-color: #b87c4f40;
+            border-color: cyan;
+            box-shadow: 0 20px 35px -10px rgba(0,255,255,0.2);
         }
         .card-icon {
             font-size: 2.8rem;
-            color: #b87c4f;
-            margin-bottom: 1.2rem;
-        }
-        .business-card h3 {
-            font-size: 1.7rem;
-            margin-bottom: 0.75rem;
-        }
-        .business-card p {
-            color: #5a5a6e;
-            line-height: 1.5;
+            color: #0ff;
             margin-bottom: 1.2rem;
         }
         .tag-list {
             display: flex;
             flex-wrap: wrap;
             gap: 0.6rem;
-            margin-top: 0.8rem;
+            margin-top: 1rem;
         }
         .tag {
-            background: #f4ede5;
+            background: rgba(0,255,255,0.1);
             padding: 4px 12px;
             border-radius: 40px;
-            font-size: 0.75rem;
-            font-weight: 600;
-            color: #9b5e34;
+            font-size: 0.7rem;
+            color: cyan;
         }
 
-        /* Coffee Division (new) */
-        .coffee-showcase {
-            background: linear-gradient(115deg, #2b2a1f 0%, #2f3b26 100%);
-            color: #fff3e8;
-            border-radius: 48px;
-            padding: 3rem;
-            margin-top: 2rem;
+        /* AI Interactive project gallery */
+        .project-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.8rem;
         }
-        .flex-coffee {
-            display: flex;
-            flex-wrap: wrap;
-            align-items: center;
-            gap: 2rem;
-        }
-        .coffee-details {
-            flex: 1;
-        }
-        .coffee-details h3 {
-            font-size: 2rem;
-            margin-bottom: 1rem;
-        }
-        .coffee-details .highlight {
-            color: #f5bc70;
-        }
-        .coffee-img {
-            flex: 0.8;
-            text-align: center;
-        }
-        .coffee-img img {
-            max-width: 240px;
-            border-radius: 50px;
-            box-shadow: 0 20px 30px rgba(0,0,0,0.3);
-        }
-
-        /* stats section */
-        .stats-wrap {
-            background: #f3ede5;
-            border-radius: 60px;
-            padding: 3rem 2rem;
-            text-align: center;
-        }
-        .stats-row {
-            display: flex;
-            justify-content: space-between;
-            flex-wrap: wrap;
-            gap: 2rem;
-        }
-        .stat-item {
-            flex: 1;
-            min-width: 140px;
-        }
-        .stat-number {
-            font-size: 2.6rem;
-            font-weight: 800;
-            color: #b87c4f;
-        }
-
-        /* CTA */
-        .cta-section {
-            background: #23231e;
-            border-radius: 48px;
-            text-align: center;
-            padding: 3.5rem;
-            color: white;
-        }
-        .cta-section h3 {
-            font-size: 2rem;
-            margin-bottom: 1rem;
-        }
-
-        /* footer */
-        footer {
-            background: #0e0e12;
-            color: #bbb;
-            padding: 3rem 0 1.5rem;
-        }
-        .footer-grid {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: space-between;
-            gap: 2rem;
-            margin-bottom: 2rem;
-        }
-        .footer-logo h4 {
-            color: #f3c7a2;
-            font-size: 1.6rem;
-        }
-        .social-links a {
-            color: #ccc;
-            margin-right: 1.2rem;
-            font-size: 1.4rem;
+        .project-card {
+            background: rgba(0,0,0,0.5);
+            backdrop-filter: blur(8px);
+            border-radius: 28px;
+            overflow: hidden;
+            border: 1px solid rgba(255,180,70,0.3);
             transition: 0.2s;
         }
-        .social-links a:hover {
-            color: #b87c4f;
+        .project-card:hover {
+            border-color: cyan;
+            transform: scale(1.02);
+        }
+        .project-img {
+            height: 180px;
+            background: linear-gradient(145deg, #1a2a33, #0a121c);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            color: cyan;
         }
 
-        /* mobile */
+        /* Coffee AI zone */
+        .coffee-ai {
+            background: radial-gradient(circle at 20% 30%, #0a1f1c, #03070c);
+            border-radius: 48px;
+            padding: 3rem;
+            border: 1px solid #ffb34788;
+        }
+
+        /* Team grid */
+        .team-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+            justify-content: center;
+        }
+        .team-ai-card {
+            background: rgba(0,0,0,0.6);
+            backdrop-filter: blur(8px);
+            border-radius: 2rem;
+            padding: 1.5rem;
+            width: 220px;
+            text-align: center;
+            border: 1px solid cyan;
+        }
+
+        /* CTA & form */
+        .cta-neon {
+            background: rgba(0, 20, 30, 0.7);
+            backdrop-filter: blur(12px);
+            border-radius: 48px;
+            text-align: center;
+            padding: 3rem;
+            border: 1px solid cyan;
+        }
+        input {
+            background: rgba(0,0,0,0.6);
+            border: 1px solid cyan;
+            color: white;
+            padding: 12px 20px;
+            border-radius: 60px;
+            outline: none;
+            font-family: monospace;
+        }
+        input::placeholder {
+            color: #aaf;
+        }
+        footer {
+            background: #03060b;
+            border-top: 1px solid cyan;
+            padding: 2rem 0;
+        }
+
         @media (max-width: 880px) {
             .nav-links {
                 display: none;
                 flex-direction: column;
                 width: 100%;
-                background: rgba(255,248,240,0.98);
+                background: rgba(0,0,0,0.9);
                 padding: 1rem;
-                border-radius: 28px;
+                border-radius: 2rem;
                 margin-top: 1rem;
-                gap: 1rem;
-                text-align: center;
             }
             .nav-links.active {
                 display: flex;
@@ -414,56 +376,53 @@
             .hero-content h1 {
                 font-size: 2.5rem;
             }
-            .container {
-                padding: 0 24px;
-            }
-            section {
-                padding: 60px 0;
-            }
-            .coffee-showcase {
-                padding: 2rem;
-            }
-            .stats-row {
-                justify-content: center;
-            }
         }
-        @media (max-width: 600px) {
-            .hero-stats {
-                flex-wrap: wrap;
-                gap: 1rem;
-            }
-            .btn {
-                padding: 10px 22px;
-            }
-        }
-
-        /* animations */
         .fade-up {
             opacity: 0;
-            transform: translateY(25px);
-            transition: opacity 0.7s ease, transform 0.7s ease;
+            transform: translateY(30px);
+            transition: opacity 0.8s cubic-bezier(0.2, 0.9, 0.4, 1.1), transform 0.8s ease;
         }
         .fade-up.appear {
             opacity: 1;
             transform: translateY(0);
         }
+        .glow-text {
+            text-shadow: 0 0 5px cyan;
+        }
     </style>
 </head>
 <body>
 
-<!-- Navigation -->
-<nav class="navbar" id="navbar">
+<canvas id="bg-canvas"></canvas>
+
+<nav class="navbar">
     <div class="container nav-container">
-        <div class="logo">
-            <h1>RDG<span>Business Holding</span></h1>
+        <div class="logo-container">
+            <!-- custom logo created with SVG (futuristic cube + bean/leaf) -->
+            <div class="custom-logo">
+                <svg width="48" height="48" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <rect x="25" y="30" width="50" height="40" rx="8" stroke="url(#grad)" stroke-width="2.5" fill="rgba(0,255,255,0.1)"/>
+                    <path d="M45 45 L55 45 M45 55 L55 55" stroke="#0ff" stroke-width="2" stroke-linecap="round"/>
+                    <circle cx="50" cy="65" r="8" stroke="#ffb347" stroke-width="2" fill="none"/>
+                    <path d="M35 25 L50 20 L65 25" stroke="#0ff" stroke-width="2" fill="none"/>
+                    <defs>
+                        <linearGradient id="grad" x1="0%" y1="0%" x2="100%" y2="100%">
+                            <stop offset="0%" stop-color="#0ff"/>
+                            <stop offset="100%" stop-color="#ffb347"/>
+                        </linearGradient>
+                    </defs>
+                </svg>
+            </div>
+            <span class="logo-text">RDG</span>
         </div>
         <div class="menu-icon" id="menuToggle">
             <i class="fas fa-bars"></i>
         </div>
         <ul class="nav-links" id="navLinks">
             <li><a href="#home" class="nav-link">Home</a></li>
-            <li><a href="#businesses" class="nav-link">Divisions</a></li>
-            <li><a href="#coffee-division" class="nav-link">Coffee Hub</a></li>
+            <li><a href="#divisions" class="nav-link">Divisions</a></li>
+            <li><a href="#projects" class="nav-link">AI Projects</a></li>
+            <li><a href="#coffee" class="nav-link">Coffee AI</a></li>
             <li><a href="#contact" class="nav-link">Contact</a></li>
         </ul>
     </div>
@@ -472,244 +431,221 @@
 <!-- Hero Section -->
 <section id="home" class="hero">
     <div class="container hero-grid">
-        <div class="hero-content">
-            <div class="hero-badge"><i class="fas fa-chart-line"></i>  Diversified Excellence</div>
-            <h1>Building <span class="hero-highlight">dreams</span>, importing <span class="hero-highlight">innovation</span>, roasting <span class="hero-highlight">legacy</span>.</h1>
-            <p class="hero-desc">RDG Business Holding — where construction meets global trade & authentic Ethiopian coffee craftsmanship.</p>
-            <a href="#coffee-division" class="btn">Discover Coffee Journey <i class="fas fa-arrow-right"></i></a>
+        <div class="hero-content fade-up">
+            <div class="hero-badge"><i class="fas fa-microchip"></i>  AI-Integrated Business Ecosystem</div>
+            <h1>Where <span class="hero-highlight">construction</span> meets <span class="hero-highlight">intelligent import</span> & <span class="hero-highlight">algorithmic coffee</span>.</h1>
+            <p class="hero-desc">RDG Business Holding — leveraging AI-driven logistics, smart landscaping, and precision coffee roasting for global markets.</p>
+            <a href="#coffee" class="btn">Explore Neural Coffee <i class="fas fa-arrow-right"></i></a>
             <div class="hero-stats">
-                <div><span class="stat">15+</span> <span class="stat-label">Years Experience</span></div>
-                <div><span class="stat">3</span> <span class="stat-label">Core Divisions</span></div>
-                <div><span class="stat">12+</span> <span class="stat-label">Global Partners</span></div>
+                <div><span class="stat-number" id="stat1">15+</span> <span class="stat-label">Years Data</span></div>
+                <div><span class="stat-number">∞</span> <span class="stat-label">Innovation</span></div>
+                <div><span class="stat-number">3</span> <span class="stat-label">AI Divisions</span></div>
             </div>
         </div>
-        <div class="hero-image">
-            <img src="https://placehold.co/600x500/f9f3e8/b87c4f?text=RDG+Group+Synergy&font=montserrat" alt="RDG Group Illustration">
+        <div class="hero-image fade-up">
+            <div style="font-size: 12rem; text-align:center; filter:drop-shadow(0 0 20px cyan);"><i class="fas fa-brain"></i></div>
         </div>
     </div>
 </section>
 
-<!-- Divisions Cards (Construction, Import, upcoming coffee) -->
-<section id="businesses">
+<!-- Divisions (AI smart) -->
+<section id="divisions">
     <div class="container">
         <div class="section-title fade-up">
-            <h2>Our Business Divisions</h2>
-            <p>Integrated excellence across construction, imports, and a new frontier in specialty coffee.</p>
+            <h2>Intelligent Divisions</h2>
+            <p>Digitally powered ecosystems: RDG Construction, Import, and Coffee Roastery.</p>
         </div>
         <div class="cards-grid">
-            <!-- RDG Construction -->
-            <div class="business-card fade-up">
-                <div class="card-icon"><i class="fas fa-hard-hat"></i></div>
-                <h3>RDG Construction</h3>
-                <p>General contractor specialized in premium landscape architecture, outdoor developments, and eco-friendly urban projects.</p>
-                <div class="tag-list">
-                    <span class="tag">Landscaping</span>
-                    <span class="tag">Outdoor Works</span>
-                    <span class="tag">General Contracting</span>
-                </div>
-            </div>
-            <!-- RDG Import -->
-            <div class="business-card fade-up">
-                <div class="card-icon"><i class="fas fa-ship"></i></div>
-                <h3>RDG Import</h3>
-                <p>Strategic import of electrical equipment, coffee lab instruments, and commercial coffee roasting machinery from top global brands.</p>
-                <div class="tag-list">
-                    <span class="tag">Electrical Gear</span>
-                    <span class="tag">Coffee Lab Tech</span>
-                    <span class="tag">Roasters</span>
-                </div>
-            </div>
-            <!-- Coffee division teaser -->
-            <div class="business-card fade-up">
-                <div class="card-icon"><i class="fas fa-mug-hot"></i></div>
-                <h3>RDG Coffee (new)</h3>
-                <p>Ethiopia’s finest beans — roasting, branding & supply. Direct trade, sustainable sourcing, exceptional single origins.</p>
-                <div class="tag-list">
-                    <span class="tag">Specialty Grade</span>
-                    <span class="tag">Direct Export</span>
-                    <span class="tag">Roastery</span>
-                </div>
-            </div>
+            <div class="business-card fade-up"><div class="card-icon"><i class="fas fa-robot"></i></div><h3>RDG Construction AI</h3><p>Smart landscape design, BIM modeling, and automated project management for residential & industrial projects.</p><div class="tag-list"><span class="tag">Generative Design</span><span class="tag">Drone Survey</span></div></div>
+            <div class="business-card fade-up"><div class="card-icon"><i class="fas fa-charging-station"></i></div><h3>RDG Import Neural</h3><p>AI-powered supply chain for electrical equipment & coffee lab machinery. Real-time tracking, predictive analytics.</p><div class="tag-list"><span class="tag">IoT Logistics</span><span class="tag">Roaster AI</span></div></div>
+            <div class="business-card fade-up"><div class="card-icon"><i class="fas fa-mug-hot"></i></div><h3>RDG Coffee • Deep Learning</h3><p>Ethiopian specialty coffee roasted by algorithm-assisted profiling. Branding with digital traceability, export ready.</p><div class="tag-list"><span class="tag">Smart Roast</span><span class="tag">Blockchain Sourcing</span></div></div>
         </div>
     </div>
 </section>
 
-<!-- NEW Coffee Division Expansion (full detailed) -->
-<section id="coffee-division">
+<!-- AI Projects Showcase referencing RDG real works -->
+<section id="projects">
     <div class="container">
-        <div class="coffee-showcase fade-up">
-            <div class="flex-coffee">
-                <div class="coffee-details">
-                    <h3><i class="fas fa-seedling"></i> RDG Coffee Roastery & <span class="highlight">Supply</span></h3>
-                    <p>Rooted in Ethiopian heritage, we’re launching a dedicated division for roasting, branding, and supplying high-quality Ethiopian coffee. From Yirgacheffe to Sidama, we bring vibrant acidity and floral aromas to local roasters and international markets.</p>
-                    <ul style="margin: 1rem 0 1.5rem 1.2rem; list-style: circle; line-height: 1.5;">
-                        <li>✔ On‑site coffee lab & quality control</li>
-                        <li>✔ Commercial & artisanal roasting solutions</li>
-                        <li>✔ Custom branding for cafes & distributors</li>
-                        <li>✔ Sustainable partnerships with Ethiopian farmers</li>
+        <div class="section-title fade-up">
+            <h2>AI Augmented Projects</h2>
+            <p>Landscape intelligence & construction analytics by RDG.</p>
+        </div>
+        <div class="project-grid">
+            <div class="project-card fade-up"><div class="project-img"><i class="fas fa-tree"></i></div><div class="project-info" style="padding:1rem"><h4>East Africa Bottling</h4><p>AI-optimized recreation space & green coverage analytics.</p></div></div>
+            <div class="project-card fade-up"><div class="project-img"><i class="fas fa-industry"></i></div><div class="project-info" style="padding:1rem"><h4>National Cement (Lemli)</h4><p>Drone mapping + post-mining rehabilitation neural models.</p></div></div>
+            <div class="project-card fade-up"><div class="project-img"><i class="fas fa-hotel"></i></div><div class="project-info" style="padding:1rem"><h4>Tryst Boutique Hotel</h4><p>Generative landscape and resort management.</p></div></div>
+        </div>
+    </div>
+</section>
+
+<!-- Coffee division: futuristic -->
+<section id="coffee">
+    <div class="container">
+        <div class="coffee-ai fade-up">
+            <div style="display: flex; flex-wrap:wrap; gap:2rem; align-items:center;">
+                <div style="flex:1">
+                    <h3 style="font-size:2rem"><i class="fas fa-microchip"></i> RDG Coffee Intelligence</h3>
+                    <p>Launching our third division: AI-assisted coffee roasting, smart branding, and high-quality Ethiopian coffee supply. Our platform offers real-time roast profiling, green bean analysis, and direct farm-to-cup traceability.</p>
+                    <ul style="margin:1rem 0; list-style:none">
+                        <li>✓ Neural network roast curves</li>
+                        <li>✓ Commercial & sample roasters (import synergy)</li>
+                        <li>✓ White label AI branding tools</li>
+                        <li>✓ Global shipping & market integration</li>
                     </ul>
-                    <a href="#" class="btn" id="coffeeCtaBtn"><i class="fas fa-envelope"></i> Inquire for wholesale</a>
+                    <button id="coffeeAIBtn" class="btn"><i class="fas fa-brain"></i> Activate Coffee AI</button>
                 </div>
-                <div class="coffee-img">
-                    <img src="https://placehold.co/350x350/e7cba5/b87c4f?text=Specialty+Coffee&font=playfair" alt="Ethiopian Coffee">
-                </div>
+                <div style="flex:0.7; text-align:center"><i class="fas fa-chart-line" style="font-size: 8rem; color: cyan;"></i></div>
             </div>
         </div>
     </div>
 </section>
 
-<!-- Stats + Trust section -->
+<!-- Team: digital architects -->
 <section>
     <div class="container">
-        <div class="stats-wrap fade-up">
-            <div class="stats-row">
-                <div class="stat-item"><div class="stat-number">1000+</div><div>Projects Completed</div></div>
-                <div class="stat-item"><div class="stat-number">50+</div><div>Machinery Imports</div></div>
-                <div class="stat-item"><div class="stat-number">6</div><div>Coffee Origins</div></div>
-                <div class="stat-item"><div class="stat-number">24/7</div><div>Global Logistics</div></div>
-            </div>
+        <div class="section-title fade-up"><h2>Neural Design Team</h2><p>Human + AI synergy in landscape architecture & engineering.</p></div>
+        <div class="team-grid">
+            <div class="team-ai-card fade-up"><i class="fas fa-user-astronaut" style="font-size:2rem;color:cyan"></i><h4>Zenebech Chane</h4><p>Lead Landscape AI</p><small>10+ yrs, MSc pending</small></div>
+            <div class="team-ai-card fade-up"><i class="fas fa-drafting-compass"></i><h4>Haftom G/yesus</h4><p>Computational Architect</p></div>
+            <div class="team-ai-card fade-up"><i class="fas fa-cubes"></i><h4>Amanuel Girma</h4><p>Structural AI Engineer</p></div>
+            <div class="team-ai-card fade-up"><i class="fas fa-water"></i><h4>Frehiwat Wondu</h4><p>Smart Plumbing/Fire</p></div>
         </div>
     </div>
 </section>
 
-<!-- Interactive CTA & Contact Form -->
+<!-- CTA Contact & Digital form -->
 <section id="contact">
     <div class="container">
-        <div class="cta-section fade-up">
-            <h3>Let’s brew something great together.</h3>
-            <p style="margin-bottom: 1.8rem;">Partner with RDG for construction, premium imports, or authentic Ethiopian coffee.</p>
-            <form id="contactForm" style="max-width: 500px; margin: 0 auto; display: flex; flex-wrap: wrap; gap: 12px; justify-content: center;">
-                <input type="text" id="nameInput" placeholder="Your name" required style="flex:1; min-width: 160px; padding: 12px 16px; border-radius: 60px; border: none; outline: none; font-size: 0.9rem;">
-                <input type="email" id="emailInput" placeholder="Email address" required style="flex:1; min-width: 180px; padding: 12px 16px; border-radius: 60px; border: none; outline: none;">
-                <button type="submit" class="btn" style="background: #fff; color:#b87c4f;"><i class="fas fa-paper-plane"></i> Get in touch</button>
+        <div class="cta-neon fade-up">
+            <h3 style="font-size:2rem">⚡ Cogni-Contact</h3>
+            <p style="margin-bottom:1.5rem">Connect with RDG for construction tenders, import inquiries, or AI coffee partnership.</p>
+            <form id="aiContactForm" style="max-width: 550px; margin:0 auto; display: flex; flex-wrap: wrap; gap: 12px; justify-content: center;">
+                <input type="text" id="aiName" placeholder="Full name" required style="flex:1; min-width:160px;">
+                <input type="email" id="aiEmail" placeholder="Email address" required style="flex:1; min-width:180px;">
+                <button type="submit" class="btn" style="background: #0ff; color:#000; font-weight: bold;"><i class="fas fa-paper-plane"></i> Neural Inquiry</button>
             </form>
-            <div id="formFeedback" style="margin-top: 1.2rem; font-size: 0.9rem;"></div>
+            <div id="aiFormFeedback" style="margin-top: 1.5rem; font-size:0.9rem;"></div>
+            <div style="margin-top: 2rem; font-size: 0.9rem; opacity:0.9">
+                <i class="fas fa-map-marker-alt"></i> Addis Ababa, Bole Sub City &nbsp;|&nbsp; 📞 +251913662154 &nbsp;|&nbsp; ✉ rdg.construction2016@gmail.com
+            </div>
         </div>
     </div>
 </section>
 
-<!-- Footer -->
 <footer>
-    <div class="container">
-        <div class="footer-grid">
-            <div class="footer-logo">
-                <h4>RDG Business Holding</h4>
-                <p style="margin-top: 6px;">Diversified | Visionary | Ethiopian Roots</p>
-            </div>
-            <div>
-                <p><i class="fas fa-map-marker-alt"></i> Addis Ababa, Ethiopia</p>
-                <p><i class="fas fa-phone-alt"></i> +251 911 234 567</p>
-                <p><i class="fas fa-envelope"></i> contact@rdgbusiness.com</p>
-            </div>
-            <div class="social-links">
-                <a href="#"><i class="fab fa-linkedin-in"></i></a>
-                <a href="#"><i class="fab fa-instagram"></i></a>
-                <a href="#"><i class="fab fa-twitter"></i></a>
-            </div>
+    <div class="container" style="text-align:center">
+        <div class="custom-logo" style="display:flex; justify-content:center; margin-bottom:1rem">
+            <svg width="40" height="40" viewBox="0 0 100 100"><use href="#grad"></use><rect x="25" y="30" width="50" height="40" rx="8" stroke="cyan" stroke-width="2" fill="none"/><circle cx="50" cy="65" r="8" stroke="#ffb347" stroke-width="2" fill="none"/></svg>
         </div>
-        <hr style="border-color: #2c2c30; margin: 1rem 0;">
-        <p style="text-align: center; font-size: 0.8rem;">&copy; 2025 RDG Business Holding — Building & roasting the future.</p>
+        <p>&copy; 2025 RDG Business Holding — AI-Enhanced | Construction · Import · Coffee Intelligence</p>
+        <div style="margin-top:12px"><i class="fab fa-twitter"></i> <i class="fab fa-linkedin"></i> <i class="fab fa-instagram"></i></div>
     </div>
 </footer>
 
+<script type="module">
+    import * as THREE from 'three';
+
+    const canvas = document.getElementById('bg-canvas');
+    const scene = new THREE.Scene();
+    scene.background = new THREE.Color(0x05070a);
+    const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+    const renderer = new THREE.WebGLRenderer({ canvas, alpha: false });
+    renderer.setSize(window.innerWidth, window.innerHeight);
+    renderer.setPixelRatio(window.devicePixelRatio);
+
+    // futuristic particles
+    const particlesGeometry = new THREE.BufferGeometry();
+    const particlesCount = 1800;
+    const posArray = new Float32Array(particlesCount * 3);
+    for(let i = 0; i < particlesCount * 3; i += 3) {
+        posArray[i] = (Math.random() - 0.5) * 200;
+        posArray[i+1] = (Math.random() - 0.5) * 100;
+        posArray[i+2] = (Math.random() - 0.5) * 80 - 40;
+    }
+    particlesGeometry.setAttribute('position', new THREE.BufferAttribute(posArray, 3));
+    const particlesMaterial = new THREE.PointsMaterial({ color: 0x00ffff, size: 0.2, transparent: true, opacity: 0.5 });
+    const particlesMesh = new THREE.Points(particlesGeometry, particlesMaterial);
+    scene.add(particlesMesh);
+    
+    // central torus knot
+    const geometry = new THREE.TorusKnotGeometry(2.2, 0.5, 200, 32, 3, 4);
+    const material = new THREE.MeshStandardMaterial({ color: 0xff6a2e, emissive: 0x442200, metalness: 0.8, roughness: 0.2 });
+    const knot = new THREE.Mesh(geometry, material);
+    scene.add(knot);
+    
+    const ambientLight = new THREE.AmbientLight(0x404060);
+    scene.add(ambientLight);
+    const pointLight = new THREE.PointLight(0x00aaff, 1, 60);
+    pointLight.position.set(5, 10, 7);
+    scene.add(pointLight);
+    const secondLight = new THREE.PointLight(0xffaa33, 0.8);
+    secondLight.position.set(-4, 3, 6);
+    scene.add(secondLight);
+    
+    camera.position.z = 14;
+    camera.position.y = 2;
+    
+    function animate() {
+        requestAnimationFrame(animate);
+        knot.rotation.x += 0.005;
+        knot.rotation.y += 0.008;
+        particlesMesh.rotation.y += 0.0005;
+        particlesMesh.rotation.x += 0.0003;
+        renderer.render(scene, camera);
+    }
+    animate();
+    
+    window.addEventListener('resize', () => {
+        camera.aspect = window.innerWidth / window.innerHeight;
+        camera.updateProjectionMatrix();
+        renderer.setSize(window.innerWidth, window.innerHeight);
+    });
+</script>
+
 <script>
-    // Mobile menu toggle
+    // mobile menu, scroll animations, and interactive AI form
     const menuToggle = document.getElementById('menuToggle');
     const navLinks = document.getElementById('navLinks');
-    menuToggle.addEventListener('click', () => {
-        navLinks.classList.toggle('active');
+    menuToggle.addEventListener('click', () => navLinks.classList.toggle('active'));
+
+    const faders = document.querySelectorAll('.fade-up');
+    const appearObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => { if(entry.isIntersecting) { entry.target.classList.add('appear'); appearObserver.unobserve(entry.target); } });
+    }, { threshold: 0.1 });
+    faders.forEach(el => appearObserver.observe(el));
+
+    // Form handling
+    const form = document.getElementById('aiContactForm');
+    const feedback = document.getElementById('aiFormFeedback');
+    form.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const name = document.getElementById('aiName').value.trim();
+        const email = document.getElementById('aiEmail').value.trim();
+        if(!name || !email) { feedback.innerHTML = '<span style="background:#ff3366aa; padding:6px 18px; border-radius:60px;">⚠️ Neural input required: both fields.</span>'; setTimeout(()=>feedback.innerHTML='',2500); return; }
+        if(!email.includes('@')) { feedback.innerHTML = '<span style="background:#ff3366aa; padding:6px 18px; border-radius:60px;">📡 Invalid email dimension.</span>'; setTimeout(()=>feedback.innerHTML='',2500); return; }
+        feedback.innerHTML = '<span style="background:#0f0; color:#000; padding:8px 20px; border-radius:60px;"><i class="fas fa-check-circle"></i> Transmission received, RDG AI will connect within 24h.</span>';
+        document.getElementById('aiName').value = ''; document.getElementById('aiEmail').value = '';
+        setTimeout(()=>feedback.innerHTML='',4000);
     });
 
-    // smooth scroll + active nav highlight
+    const coffeeBtn = document.getElementById('coffeeAIBtn');
+    if(coffeeBtn) coffeeBtn.addEventListener('click', () => {
+        const contactSec = document.getElementById('contact');
+        contactSec.scrollIntoView({ behavior: 'smooth' });
+        setTimeout(() => { feedback.innerHTML = '<span style="background:cyan; color:black; border-radius:60px; padding:8px 20px;">☕ Coffee AI mode: wholesale & branding inquiry ready.</span>'; setTimeout(()=>feedback.innerHTML='',4500); }, 800);
+    });
+
+    // active nav scroll
     const sections = document.querySelectorAll('section');
-    const navItems = document.querySelectorAll('.nav-link');
     window.addEventListener('scroll', () => {
         let current = "";
-        sections.forEach(section => {
-            const sectionTop = section.offsetTop - 120;
-            if (scrollY >= sectionTop) {
-                current = section.getAttribute('id');
-            }
-        });
-        navItems.forEach(link => {
-            link.classList.remove('active');
-            if (link.getAttribute('href') === `#${current}`) {
-                link.classList.add('active');
-            }
-        });
+        sections.forEach(s => { if(scrollY >= s.offsetTop - 200) current = s.getAttribute('id'); });
+        document.querySelectorAll('.nav-link').forEach(l => { l.classList.remove('active'); if(l.getAttribute('href') === `#${current}`) l.classList.add('active'); });
     });
-
-    document.querySelectorAll('.nav-link, .btn[href^="#"]').forEach(anchor => {
-        anchor.addEventListener('click', function(e) {
-            const targetId = this.getAttribute('href');
-            if (targetId && targetId !== "#") {
-                e.preventDefault();
-                const targetElem = document.querySelector(targetId);
-                if (targetElem) {
-                    targetElem.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                    if (navLinks.classList.contains('active')) navLinks.classList.remove('active');
-                }
-            }
-        });
-    });
-
-    // scroll reveal animation (intersection observer)
-    const fadeElements = document.querySelectorAll('.fade-up');
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add('appear');
-                observer.unobserve(entry.target);
-            }
-        });
-    }, { threshold: 0.1, rootMargin: "0px 0px -20px 0px" });
-    fadeElements.forEach(el => observer.observe(el));
-
-    // Contact form interactive + smart toast like feedback
-    const contactForm = document.getElementById('contactForm');
-    const feedbackDiv = document.getElementById('formFeedback');
-    contactForm.addEventListener('submit', (e) => {
-        e.preventDefault();
-        const name = document.getElementById('nameInput').value.trim();
-        const email = document.getElementById('emailInput').value.trim();
-        if(name === "" || email === "") {
-            feedbackDiv.innerHTML = '<span style="background:#fff1e6; padding:8px 20px; border-radius:60px; color:#b6511a;">⚠️ Please fill both fields.</span>';
-            setTimeout(() => { feedbackDiv.innerHTML = ''; }, 2500);
-            return;
-        }
-        if(!email.includes('@') || !email.includes('.')) {
-            feedbackDiv.innerHTML = '<span style="background:#fff1e6; padding:8px 20px; border-radius:60px; color:#b6511a;">📧 Enter a valid email address.</span>';
-            setTimeout(() => { feedbackDiv.innerHTML = ''; }, 2500);
-            return;
-        }
-        feedbackDiv.innerHTML = '<span style="background:#2b5e2f; padding:8px 20px; border-radius:60px; color:white;"><i class="fas fa-check-circle"></i> Thanks ' + name + '! Our team will reply within 24h.</span>';
-        document.getElementById('nameInput').value = '';
-        document.getElementById('emailInput').value = '';
-        setTimeout(() => { feedbackDiv.innerHTML = ''; }, 4000);
-        // optional: you could console log or ajax
-    });
-
-    // special button for coffee inquiry (alert + smooth)
-    const coffeeBtn = document.getElementById('coffeeCtaBtn');
-    if(coffeeBtn){
-        coffeeBtn.addEventListener('click', (e) => {
-            e.preventDefault();
-            const contactSection = document.getElementById('contact');
-            contactSection.scrollIntoView({ behavior: 'smooth' });
-            setTimeout(() => {
-                const feedbackMsg = document.getElementById('formFeedback');
-                feedbackMsg.innerHTML = '<span style="background:#b87c4f; padding:8px 20px; border-radius:60px; color:white;">☕ Let’s talk coffee! Fill the form for wholesale pricing.</span>';
-                setTimeout(() => { if(feedbackMsg.innerHTML.includes('Let’s talk coffee')) feedbackMsg.innerHTML = ''; }, 4000);
-            }, 600);
-        });
-    }
-
-    // change active when clicking nav (optional)
-    const allLinks = document.querySelectorAll('.nav-link');
-    allLinks.forEach(link => {
-        link.addEventListener('click', function() {
-            allLinks.forEach(l => l.classList.remove('active'));
-            this.classList.add('active');
+    document.querySelectorAll('.nav-link').forEach(link => {
+        link.addEventListener('click', function(e) {
+            const target = this.getAttribute('href');
+            if(target && target !== "#") { e.preventDefault(); document.querySelector(target).scrollIntoView({ behavior: 'smooth' }); if(navLinks.classList.contains('active')) navLinks.classList.remove('active'); }
         });
     });
 </script>
