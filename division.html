@@ -1,91 +1,282 @@
-<!-- divisions.html - Dedicated Divisions Page -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-    <title>RDG Business Holding | Divisions - Construction, Import, Coffee</title>
+    <title>RDG Business Holding | Divisions - Construction | Import | Premium Coffee</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;400;500;600;700;800;900&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,500&display=swap" rel="stylesheet">
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body { font-family: 'Inter', sans-serif; background: #FEFAF5; color: #1A1A2E; overflow-x: hidden; }
-        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar { width: 7px; }
         ::-webkit-scrollbar-track { background: #E8E2D4; }
-        ::-webkit-scrollbar-thumb { background: #C47A44; border-radius: 10px; }
-        #preloader { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #0C0F16; display: flex; justify-content: center; align-items: center; z-index: 9999; transition: opacity 0.6s; }
-        .loader-ring { width: 60px; height: 60px; border: 4px solid rgba(196,122,68,0.2); border-top: 4px solid #C47A44; border-radius: 50%; animation: spin 0.8s linear infinite; }
+        ::-webkit-scrollbar-thumb { background: #C47A44; border-radius: 12px; }
+        
+        /* Preloader cinematic */
+        #preloader { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #0C0F16; display: flex; justify-content: center; align-items: center; z-index: 9999; transition: opacity 0.7s ease; }
+        .loader-ring { width: 70px; height: 70px; border: 4px solid rgba(196,122,68,0.2); border-top: 4px solid #C47A44; border-radius: 50%; animation: spin 0.9s cubic-bezier(0.68, -0.55, 0.265, 1.55) infinite; }
         @keyframes spin { to { transform: rotate(360deg); } }
+        
+        /* Navbar premium */
         .navbar { position: fixed; top: 0; left: 0; width: 100%; background: rgba(255, 252, 245, 0.96); backdrop-filter: blur(16px); box-shadow: 0 8px 25px rgba(0,0,0,0.05); z-index: 1000; padding: 0.9rem 2rem; transition: all 0.3s; border-bottom: 1px solid rgba(196,122,68,0.2); }
         .nav-container { max-width: 1400px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; }
-        .logo h1 { font-size: 1.8rem; font-weight: 800; background: linear-gradient(135deg, #2C5F2D, #C47A44); background-clip: text; -webkit-background-clip: text; color: transparent; }
-        .logo span { font-size: 0.7rem; font-weight: 500; color: #C47A44; display: block; letter-spacing: 1px; }
-        .nav-links { display: flex; gap: 2rem; list-style: none; }
-        .nav-links a { text-decoration: none; font-weight: 600; color: #2D2E36; transition: 0.3s; font-size: 0.95rem; }
+        .logo h1 { font-size: 1.9rem; font-weight: 800; background: linear-gradient(135deg, #2C5F2D, #D68B4A); background-clip: text; -webkit-background-clip: text; color: transparent; letter-spacing: -0.5px; font-family: 'Playfair Display', serif; }
+        .logo span { font-size: 0.65rem; font-weight: 600; color: #C47A44; display: block; letter-spacing: 1.5px; }
+        .nav-links { display: flex; gap: 2rem; list-style: none; align-items: center; }
+        .nav-links a { text-decoration: none; font-weight: 600; color: #2D2E36; transition: 0.3s; font-size: 0.95rem; position: relative; }
+        .nav-links a::after { content: ''; position: absolute; bottom: -6px; left: 0; width: 0%; height: 2.5px; background: #C47A44; border-radius: 3px; transition: width 0.25s ease; }
+        .nav-links a:hover::after, .nav-links a.active::after { width: 100%; }
         .nav-links a:hover, .nav-links a.active { color: #C47A44; }
         .menu-icon { display: none; font-size: 1.8rem; cursor: pointer; color: #C47A44; }
-        .page-hero { background: linear-gradient(125deg, #1E2A2A 0%, #2C3E3A 100%); padding: 140px 0 80px; color: white; text-align: center; position: relative; overflow: hidden; }
-        .page-hero:before { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: radial-gradient(circle at 70% 20%, rgba(196,122,68,0.2), transparent 70%); }
+        
+        /* Hero Section - Divisions */
+        .page-hero { background: linear-gradient(125deg, #1E2A2A 0%, #2C3E3A 100%); padding: 150px 0 90px; color: white; text-align: center; position: relative; overflow: hidden; }
+        .page-hero:before { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: radial-gradient(circle at 70% 20%, rgba(196,122,68,0.25), transparent 70%); }
         .hero-content-div { position: relative; z-index: 2; max-width: 800px; margin: 0 auto; }
-        .hero-badge { background: rgba(196,122,68,0.2); display: inline-block; padding: 6px 18px; border-radius: 40px; font-size: 0.75rem; font-weight: 700; color: #F0B87A; margin-bottom: 1rem; backdrop-filter: blur(4px); }
-        .page-hero h1 { font-size: 3.8rem; font-weight: 800; margin-bottom: 1rem; }
-        .page-hero p { font-size: 1.2rem; color: #E0DDD2; max-width: 600px; margin: 0 auto; }
+        .hero-badge { background: rgba(196,122,68,0.2); display: inline-block; padding: 6px 20px; border-radius: 40px; font-size: 0.75rem; font-weight: 700; color: #F0B87A; margin-bottom: 1rem; backdrop-filter: blur(4px); border: 1px solid rgba(196,122,68,0.3); }
+        .page-hero h1 { font-size: 4rem; font-weight: 800; margin-bottom: 1rem; font-family: 'Playfair Display', serif; letter-spacing: -0.02em; }
+        .page-hero p { font-size: 1.2rem; color: #E0DDD2; max-width: 650px; margin: 0 auto; line-height: 1.5; }
+        
         .container { max-width: 1280px; margin: 0 auto; padding: 0 40px; }
-        .division-block { padding: 80px 0; border-bottom: 1px solid rgba(196,122,68,0.15); }
+        .division-block { padding: 90px 0; border-bottom: 1px solid rgba(196,122,68,0.12); }
         .division-block:last-child { border-bottom: none; }
         .division-grid { display: flex; flex-wrap: wrap; align-items: center; gap: 4rem; }
         .division-info { flex: 1.2; }
-        .division-icon { font-size: 3.5rem; color: #C47A44; margin-bottom: 1.2rem; }
-        .division-info h2 { font-size: 2.5rem; font-weight: 800; margin-bottom: 0.75rem; background: linear-gradient(135deg, #2C5F2D, #C47A44); background-clip: text; -webkit-background-clip: text; color: transparent; }
-        .division-desc { font-size: 1.05rem; line-height: 1.6; color: #4A4A5A; margin: 1rem 0 1.5rem 0; }
-        .feature-list { list-style: none; margin-bottom: 1.8rem; }
-        .feature-list li { margin-bottom: 0.7rem; display: flex; align-items: center; gap: 12px; }
+        .division-icon { font-size: 3.8rem; color: #C47A44; margin-bottom: 1.2rem; background: #FFF0E4; width: 80px; height: 80px; display: flex; align-items: center; justify-content: center; border-radius: 28px; transition: 0.3s; }
+        .division-block:hover .division-icon { transform: scale(1.05); background: #FFE6D5; }
+        .division-info h2 { font-size: 2.6rem; font-weight: 800; margin-bottom: 0.75rem; background: linear-gradient(135deg, #2C5F2D, #C47A44); background-clip: text; -webkit-background-clip: text; color: transparent; font-family: 'Playfair Display', serif; }
+        .division-desc { font-size: 1.05rem; line-height: 1.6; color: #4A4A5A; margin: 1rem 0 1.8rem 0; }
+        .feature-list { list-style: none; margin-bottom: 2rem; }
+        .feature-list li { margin-bottom: 0.8rem; display: flex; align-items: center; gap: 12px; font-weight: 500; }
         .feature-list i { color: #C47A44; font-size: 1.1rem; width: 24px; }
-        .btn-learn { display: inline-flex; align-items: center; gap: 12px; background: #C47A44; color: white; padding: 12px 28px; border-radius: 50px; font-weight: 700; text-decoration: none; transition: all 0.3s ease; box-shadow: 0 8px 18px rgba(196,122,68,0.25); border: none; cursor: pointer; }
-        .btn-learn:hover { background: #A55E2E; transform: translateY(-3px); box-shadow: 0 12px 22px rgba(196,122,68,0.35); }
+        .btn-learn { display: inline-flex; align-items: center; gap: 12px; background: #C47A44; color: white; padding: 12px 32px; border-radius: 50px; font-weight: 700; text-decoration: none; transition: all 0.3s ease; box-shadow: 0 8px 20px rgba(196,122,68,0.3); border: none; cursor: pointer; font-size: 0.9rem; }
+        .btn-learn:hover { background: #A55E2E; transform: translateY(-3px); box-shadow: 0 14px 28px rgba(196,122,68,0.4); gap: 16px; }
         .btn-outline-dark { background: transparent; border: 2px solid #C47A44; color: #C47A44; box-shadow: none; }
         .btn-outline-dark:hover { background: #C47A44; color: white; }
         .division-image { flex: 0.9; text-align: center; }
-        .division-image img { max-width: 100%; border-radius: 32px; box-shadow: 0 25px 35px -12px rgba(0,0,0,0.15); transition: 0.4s; }
-        .division-image img:hover { transform: scale(1.02); }
-        .stats-banner { background: #F7EDE2; padding: 50px 0; margin: 40px 0; border-radius: 60px; }
+        .division-image img { max-width: 100%; border-radius: 36px; box-shadow: 0 25px 40px -12px rgba(0,0,0,0.2); transition: all 0.4s ease; filter: brightness(1.02); }
+        .division-image img:hover { transform: scale(1.02) rotate(0.5deg); box-shadow: 0 30px 45px -12px rgba(196,122,68,0.25); }
+        
+        /* Stats Banner */
+        .stats-banner { background: linear-gradient(115deg, #F7EDE2, #FFF3E8); padding: 55px 0; margin: 40px 0; border-radius: 70px; box-shadow: 0 15px 30px rgba(0,0,0,0.03); }
         .stats-flex { display: flex; justify-content: space-around; flex-wrap: wrap; gap: 2rem; text-align: center; }
-        .stat-item .stat-number { font-size: 2.6rem; font-weight: 800; color: #C47A44; }
-        .cta-simple { background: linear-gradient(115deg, #1E2A22, #2A3A2E); border-radius: 48px; padding: 3rem; text-align: center; margin: 60px 0 80px; }
-        .cta-simple h3 { color: #F0B87A; font-size: 1.8rem; margin-bottom: 1rem; }
-        footer { background: #0F1419; color: #B5B8C4; padding: 3rem 0; text-align: center; }
-        @media (max-width: 880px) { .nav-links { display: none; flex-direction: column; width: 100%; background: white; padding: 1.5rem; border-radius: 28px; margin-top: 1rem; } .nav-links.active { display: flex; } .menu-icon { display: block; } .division-grid { flex-direction: column; } .page-hero h1 { font-size: 2.5rem; } .container { padding: 0 24px; } }
-        .fade-up { opacity: 0; transform: translateY(40px); transition: opacity 0.8s ease, transform 0.8s ease; }
+        .stat-item .stat-number { font-size: 2.8rem; font-weight: 800; color: #C47A44; font-family: 'Playfair Display', serif; }
+        
+        /* CTA Synergy */
+        .cta-simple { background: linear-gradient(115deg, #1E2A22, #2A3A2E); border-radius: 56px; padding: 3.5rem; text-align: center; margin: 60px 0 80px; box-shadow: 0 25px 40px -12px rgba(0,0,0,0.3); position: relative; overflow: hidden; }
+        .cta-simple:after { content: '☕'; font-size: 12rem; opacity: 0.04; position: absolute; bottom: -40px; right: -20px; pointer-events: none; }
+        .cta-simple h3 { color: #F0B87A; font-size: 2rem; margin-bottom: 0.8rem; font-family: 'Playfair Display', serif; }
+        .cta-simple p { color: #E2DDD2; max-width: 600px; margin: 0 auto 1.8rem; }
+        
+        /* Contact card */
+        .contact-card { background: white; border-radius: 48px; padding: 2.8rem; margin-bottom: 80px; box-shadow: 0 20px 40px rgba(0,0,0,0.05); border: 1px solid rgba(196,122,68,0.2); transition: 0.3s; }
+        .contact-card h3 { text-align: center; font-size: 2rem; margin-bottom: 0.5rem; color: #2C5F2D; }
+        input, select, textarea { background: #FEFAF5; border: 1px solid #E8DDD0; padding: 14px 24px; border-radius: 60px; font-family: inherit; outline: none; transition: 0.2s; width: 100%; }
+        input:focus, select:focus, textarea:focus { border-color: #C47A44; box-shadow: 0 0 0 3px rgba(196,122,68,0.1); }
+        
+        footer { background: #0F1419; color: #B5B8C4; padding: 3rem 0; text-align: center; border-top-left-radius: 38px; border-top-right-radius: 38px; margin-top: 1rem; }
+        .social-icons { margin-top: 1rem; display: flex; justify-content: center; gap: 1rem; }
+        .social-icons a { background: #232B33; width: 38px; height: 38px; display: inline-flex; align-items: center; justify-content: center; border-radius: 50%; color: #FFEAD2; transition: 0.2s; }
+        .social-icons a:hover { background: #C47A44; transform: translateY(-3px); }
+        
+        @media (max-width: 880px) { 
+            .nav-links { display: none; flex-direction: column; width: 100%; background: white; padding: 1.5rem; border-radius: 28px; margin-top: 1rem; box-shadow: 0 10px 20px rgba(0,0,0,0.05); } 
+            .nav-links.active { display: flex; } 
+            .menu-icon { display: block; } 
+            .division-grid { flex-direction: column; gap: 2rem; } 
+            .page-hero h1 { font-size: 2.5rem; } 
+            .container { padding: 0 24px; } 
+            .division-info h2 { font-size: 2rem; }
+        }
+        .fade-up { opacity: 0; transform: translateY(40px); transition: opacity 0.8s cubic-bezier(0.2, 0.9, 0.4, 1.1), transform 0.8s ease; }
         .fade-up.appear { opacity: 1; transform: translateY(0); }
-        .toast-msg { position: fixed; bottom: 30px; left: 50%; transform: translateX(-50%); background: #2C5F2D; color: white; padding: 12px 28px; border-radius: 50px; font-weight: 600; z-index: 2000; box-shadow: 0 10px 20px rgba(0,0,0,0.2); }
-        input, select, textarea { background: white; border: 1px solid #E2DCD5; padding: 14px 24px; border-radius: 60px; font-family: inherit; outline: none; transition: 0.2s; width: 100%; }
-        input:focus, select:focus, textarea:focus { border-color: #C47A44; }
+        .toast-msg { position: fixed; bottom: 30px; left: 50%; transform: translateX(-50%); background: #2C5F2D; color: white; padding: 12px 32px; border-radius: 60px; font-weight: 600; z-index: 2000; box-shadow: 0 12px 24px rgba(0,0,0,0.2); animation: slideUp 0.3s ease; backdrop-filter: blur(4px); }
+        @keyframes slideUp { from { opacity: 0; transform: translateX(-50%) translateY(20px); } to { opacity: 1; transform: translateX(-50%) translateY(0); } }
     </style>
 </head>
 <body>
 <div id="preloader"><div class="loader-ring"></div></div>
-<nav class="navbar"><div class="nav-container"><div class="logo"><h1>RDG<span>BUSINESS HOLDING</span></h1></div><div class="menu-icon" id="menuToggle"><i class="fas fa-bars"></i></div><ul class="nav-links" id="navLinks"><li><a href="index.html">Home</a></li><li><a href="divisions.html" class="active">Divisions</a></li><li><a href="index.html#portfolio">Portfolio</a></li><li><a href="index.html#coffee">Coffee</a></li><li><a href="index.html#contact">Contact</a></li></ul></div></nav>
-<section class="page-hero"><div class="hero-content-div"><div class="hero-badge"><i class="fas fa-cube"></i> Integrated Powerhouse</div><h1>Our Divisions</h1><p>Three dynamic pillars driving innovation, quality, and global impact — from Ethiopian soil to world markets.</p></div></section>
+<nav class="navbar">
+    <div class="nav-container">
+        <div class="logo"><h1>RDG<span>BUSINESS HOLDING</span></h1></div>
+        <div class="menu-icon" id="menuToggle"><i class="fas fa-bars"></i></div>
+        <ul class="nav-links" id="navLinks">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="divisions.html" class="active">Divisions</a></li>
+            <li><a href="index.html#portfolio">Portfolio</a></li>
+            <li><a href="index.html#coffee">Coffee</a></li>
+            <li><a href="index.html#contact">Contact</a></li>
+        </ul>
+    </div>
+</nav>
+
+<section class="page-hero">
+    <div class="hero-content-div">
+        <div class="hero-badge"><i class="fas fa-cube"></i> Integrated Powerhouse</div>
+        <h1>Our Divisions</h1>
+        <p>Three dynamic pillars driving innovation, quality, and global impact — from Ethiopian soil to world markets.</p>
+    </div>
+</section>
+
 <div class="container">
-    <div class="division-block fade-up" id="construction"><div class="division-grid"><div class="division-info"><div class="division-icon"><i class="fas fa-hard-hat"></i></div><h2>RDG Construction</h2><div class="division-desc">Premier general contractor reshaping Ethiopia's infrastructure & outdoor spaces. We blend engineering precision with ecological mindfulness.</div><ul class="feature-list"><li><i class="fas fa-check-circle"></i> Landscape Architecture & Hardscape</li><li><i class="fas fa-check-circle"></i> Residential & Commercial Building</li><li><i class="fas fa-check-circle"></i> Finishing Works & Project Management</li><li><i class="fas fa-check-circle"></i> Rehabilitation & Green Area Development</li></ul><div><a href="index.html#contact" class="btn-learn">Request Consultation <i class="fas fa-arrow-right"></i></a></div></div><div class="division-image"><img src="https://placehold.co/500x400/DBC8B0/C47A44?text=Construction+Excellence&font=playfair" alt="RDG Construction"></div></div></div>
-    <div class="division-block fade-up" id="import"><div class="division-grid"><div class="division-image"><img src="https://placehold.co/500x400/CBBAA2/C47A44?text=Global+Import+Logistics&font=playfair" alt="RDG Import"></div><div class="division-info"><div class="division-icon"><i class="fas fa-ship"></i></div><h2>RDG Import</h2><div class="division-desc">Strategic sourcing and trade of high-grade electrical equipment, advanced coffee lab instruments, and commercial roasting machinery from world-class manufacturers.</div><ul class="feature-list"><li><i class="fas fa-check-circle"></i> Electrical Components & Industrial Gear</li><li><i class="fas fa-check-circle"></i> Coffee Lab Instruments (SCA standard)</li><li><i class="fas fa-check-circle"></i> Commercial Coffee Roasters & Grinders</li><li><i class="fas fa-check-circle"></i> End-to-end logistics & customs clearance</li></ul><div><a href="index.html#contact" class="btn-learn btn-outline-dark">Inquire for Partnership <i class="fas fa-truck"></i></a></div></div></div></div>
-    <div class="division-block fade-up" id="coffee-div"><div class="division-grid"><div class="division-info"><div class="division-icon"><i class="fas fa-mug-hot"></i></div><h2>RDG Coffee</h2><div class="division-desc">A brand new vertical: from seed to cup. We are launching a boutique roastery and specialty coffee supply chain, showcasing Ethiopia's finest heirloom varieties.</div><ul class="feature-list"><li><i class="fas fa-check-circle"></i> Direct Trade with Smallholder Farmers</li><li><i class="fas fa-check-circle"></i> Single-Origin & Micro-lot Roasting</li><li><i class="fas fa-check-circle"></i> Private Label & White Label Solutions</li><li><i class="fas fa-check-circle"></i> Export-Ready Specialty Coffee Grades</li><li><i class="fas fa-check-circle"></i> Roastery Equipment & Lab Setup (Import synergy)</li></ul><div><a href="index.html#contact" class="btn-learn">Explore Coffee Catalog <i class="fas fa-arrow-right"></i></a></div></div><div class="division-image"><img src="https://placehold.co/500x400/EAD7B5/C47A44?text=Premium+Coffee+Roastery&font=playfair" alt="RDG Coffee"></div></div></div>
-    <div class="stats-banner fade-up"><div class="stats-flex"><div class="stat-item"><div class="stat-number">15+</div><div>Years Experience</div></div><div class="stat-item"><div class="stat-number">120+</div><div>Successful Projects</div></div><div class="stat-item"><div class="stat-number">3</div><div>Core Divisions</div></div><div class="stat-item"><div class="stat-number">25+</div><div>Global Partners</div></div></div></div>
-    <div class="cta-simple fade-up"><h3><i class="fas fa-handshake"></i> Synergy Across Divisions</h3><p style="color:#E2DDD2; margin-bottom: 1.2rem;">Our import arm supplies cutting-edge roasters to our coffee division while construction creates flagship cafes & roastery facilities — one group, endless possibilities.</p><a href="index.html#contact" class="btn-learn" style="background:#F0B87A; color:#1E2A22;">Talk to our Group Experts <i class="fas fa-comments"></i></a></div>
-    <div style="background: white; border-radius: 48px; padding: 2.5rem; margin-bottom: 80px; box-shadow: 0 20px 35px rgba(0,0,0,0.03); border: 1px solid #f0e4d5;" class="fade-up"><h3 style="text-align: center; font-size: 1.8rem; margin-bottom: 0.5rem;">Get in touch with our divisions</h3><p style="text-align: center; margin-bottom: 2rem; color:#5A5A70;">Tell us which area you're interested in</p><form id="divisionContactForm" style="max-width: 600px; margin: 0 auto;"><div style="display: flex; gap: 1rem; flex-wrap: wrap; margin-bottom: 1rem;"><input type="text" id="nameDiv" placeholder="Full name" required style="flex:1;"><input type="email" id="emailDiv" placeholder="Email" required style="flex:1;"></div><select id="divisionInterest" style="width:100%; padding: 14px 20px; border-radius: 60px; margin-bottom: 1rem; border:1px solid #ddd; background: white;"><option value="Construction">🏗️ RDG Construction</option><option value="Import">🚢 RDG Import</option><option value="Coffee">☕ RDG Coffee Roastery</option><option value="General">🤝 General Inquiry / Group</option></select><textarea id="msgDivision" rows="3" placeholder="Your message..." style="width:100%; border-radius: 28px; padding: 14px 20px; border:1px solid #ddd; margin-bottom: 1rem;"></textarea><button type="submit" class="btn-learn" style="width:100%; justify-content: center;">Send Inquiry <i class="fas fa-paper-plane"></i></button></form><div id="toastDivisions" style="margin-top: 1rem; text-align: center;"></div></div>
+    <!-- Construction Division -->
+    <div class="division-block fade-up" id="construction">
+        <div class="division-grid">
+            <div class="division-info">
+                <div class="division-icon"><i class="fas fa-hard-hat"></i></div>
+                <h2>RDG Construction</h2>
+                <div class="division-desc">Premier general contractor reshaping Ethiopia's infrastructure & outdoor spaces. We blend engineering precision with ecological mindfulness, delivering timeless architecture and sustainable landscapes.</div>
+                <ul class="feature-list">
+                    <li><i class="fas fa-check-circle"></i> Landscape Architecture & Hardscape Mastery</li>
+                    <li><i class="fas fa-check-circle"></i> Residential & Commercial Building (G+3 to G+8)</li>
+                    <li><i class="fas fa-check-circle"></i> Finishing Works & Premium Project Management</li>
+                    <li><i class="fas fa-check-circle"></i> Rehabilitation & Green Area Development (311,000m²+)</li>
+                    <li><i class="fas fa-check-circle"></i> Organic Compost & Soil Fertility Supply</li>
+                </ul>
+                <div><a href="#" class="btn-learn" id="constrTrigger">Request Consultation <i class="fas fa-arrow-right"></i></a></div>
+            </div>
+            <div class="division-image"><img src="https://placehold.co/550x450/DBC8B0/C47A44?text=Construction+Excellence+%7C+RDG&font=playfair" alt="RDG Construction flagship projects"></div>
+        </div>
+    </div>
+
+    <!-- Import Division -->
+    <div class="division-block fade-up" id="import">
+        <div class="division-grid">
+            <div class="division-image"><img src="https://placehold.co/550x450/CBBAA2/C47A44?text=Global+Import+Logistics+%7C+RDG&font=playfair" alt="RDG Import global trade"></div>
+            <div class="division-info">
+                <div class="division-icon"><i class="fas fa-ship"></i></div>
+                <h2>RDG Import</h2>
+                <div class="division-desc">Strategic sourcing and trade of high-grade electrical equipment, advanced coffee lab instruments, and commercial roasting machinery from world-class manufacturers across Europe and Asia.</p>
+                <ul class="feature-list">
+                    <li><i class="fas fa-check-circle"></i> Electrical Components & Industrial Automation Gear</li>
+                    <li><i class="fas fa-check-circle"></i> Coffee Lab Instruments (SCA standard / Q grader tools)</li>
+                    <li><i class="fas fa-check-circle"></i> Commercial Coffee Roasters (5kg – 60kg capacities)</li>
+                    <li><i class="fas fa-check-circle"></i> End-to-end logistics, warehousing & customs clearance</li>
+                    <li><i class="fas fa-check-circle"></i> Exclusive partnerships with European manufacturers</li>
+                </ul>
+                <div><a href="#" class="btn-learn btn-outline-dark" id="importTrigger">Inquire for Partnership <i class="fas fa-truck"></i></a></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Coffee Division (New) -->
+    <div class="division-block fade-up" id="coffee-div">
+        <div class="division-grid">
+            <div class="division-info">
+                <div class="division-icon"><i class="fas fa-mug-hot"></i></div>
+                <h2>RDG Coffee Roastery</h2>
+                <div class="division-desc">A bold new vertical: from seed to cup. We are launching a boutique roastery and specialty coffee supply chain, showcasing Ethiopia's finest heirloom varieties with global export standards.</div>
+                <ul class="feature-list">
+                    <li><i class="fas fa-check-circle"></i> Direct Trade with Smallholder Farmers (Yirgacheffe, Sidama, Guji)</li>
+                    <li><i class="fas fa-check-circle"></i> Single-Origin & Micro-lot Roasting Profiles</li>
+                    <li><i class="fas fa-check-circle"></i> Private Label & White Label Solutions for cafes worldwide</li>
+                    <li><i class="fas fa-check-circle"></i> Export-Ready Specialty Coffee Grades (SCA 84+)</li>
+                    <li><i class="fas fa-check-circle"></i> Roastery Equipment & Lab Setup (powered by Import division)</li>
+                </ul>
+                <div><a href="#" class="btn-learn" id="coffeeTrigger">Explore Coffee Catalog <i class="fas fa-arrow-right"></i></a></div>
+            </div>
+            <div class="division-image"><img src="https://placehold.co/550x450/EAD7B5/C47A44?text=Premium+Coffee+Roastery+%7C+RDG&font=playfair" alt="RDG Coffee specialty roastery"></div>
+        </div>
+    </div>
+
+    <!-- Stats Banner -->
+    <div class="stats-banner fade-up">
+        <div class="stats-flex">
+            <div class="stat-item"><div class="stat-number">15+</div><div>Years Experience</div></div>
+            <div class="stat-item"><div class="stat-number">120+</div><div>Successful Projects</div></div>
+            <div class="stat-item"><div class="stat-number">3</div><div>Core Divisions</div></div>
+            <div class="stat-item"><div class="stat-number">25+</div><div>Global Partners</div></div>
+        </div>
+    </div>
+
+    <!-- Synergy CTA -->
+    <div class="cta-simple fade-up">
+        <h3><i class="fas fa-handshake"></i> Synergy Across Divisions</h3>
+        <p>Our import arm supplies cutting-edge roasters to our coffee division while construction creates flagship cafes & roastery facilities — one group, endless possibilities.</p>
+        <a href="#" class="btn-learn" id="groupSynergyBtn" style="background:#F0B87A; color:#1E2A22;">Talk to our Group Experts <i class="fas fa-comments"></i></a>
+    </div>
+
+    <!-- Contact Form for Divisions -->
+    <div class="contact-card fade-up" id="contactFormDiv">
+        <h3>Get in touch with our divisions</h3>
+        <p style="text-align: center; margin-bottom: 2rem; color:#5A5A70;">Tell us which area you're interested in — tailored response guaranteed.</p>
+        <form id="divisionContactForm" style="max-width: 650px; margin: 0 auto;">
+            <div style="display: flex; gap: 1rem; flex-wrap: wrap; margin-bottom: 1rem;">
+                <input type="text" id="nameDiv" placeholder="Full name" required style="flex:1;">
+                <input type="email" id="emailDiv" placeholder="Email address" required style="flex:1;">
+            </div>
+            <select id="divisionInterest" style="width:100%; padding: 14px 20px; border-radius: 60px; margin-bottom: 1rem; border:1px solid #E8DDD0; background: white;">
+                <option value="Construction">🏗️ RDG Construction — Building & Landscaping</option>
+                <option value="Import">🚢 RDG Import — Electrical & Coffee Machinery</option>
+                <option value="Coffee">☕ RDG Coffee Roastery — Specialty & Wholesale</option>
+                <option value="General">🤝 General Inquiry / Group Synergy</option>
+            </select>
+            <textarea id="msgDivision" rows="3" placeholder="Your message or specific request..." style="width:100%; border-radius: 28px; padding: 14px 20px; border:1px solid #E8DDD0; margin-bottom: 1rem;"></textarea>
+            <button type="submit" class="btn-learn" style="width:100%; justify-content: center; background:#C47A44;">Send Inquiry <i class="fas fa-paper-plane"></i></button>
+        </form>
+        <div id="toastDivisions" style="margin-top: 1rem; text-align: center;"></div>
+    </div>
 </div>
-<footer><div class="container"><div style="margin-bottom: 1rem;"><h3 style="color:#F0B87A;">RDG Business Holding</h3></div><p>© 2025 RDG Business Holding — Construction | Import | Ethiopian Coffee Roastery</p><div style="margin-top: 1rem; font-size: 1.2rem;"><i class="fab fa-linkedin-in" style="margin: 0 8px;"></i><i class="fab fa-instagram" style="margin: 0 8px;"></i><i class="fab fa-twitter" style="margin: 0 8px;"></i></div><p style="margin-top: 1.5rem; font-size: 0.8rem;">Addis Ababa, Bole Sub City | 📞 +251913662154 | rdg.construction2016@gmail.com</p></div></footer>
+
+<footer>
+    <div class="container">
+        <div style="margin-bottom: 1rem;"><h3 style="color:#F0B87A;">RDG Business Holding</h3></div>
+        <p>© 2025 RDG Business Holding — Construction | Import | Ethiopian Coffee Roastery</p>
+        <div class="social-icons">
+            <a href="#"><i class="fab fa-linkedin-in"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+        </div>
+        <p style="margin-top: 1.5rem; font-size: 0.8rem;">Addis Ababa, Bole Sub City | 📞 +251913662154 | ✉ rdg.construction2016@gmail.com</p>
+    </div>
+</footer>
+
 <script>
+    // Preloader
     window.addEventListener('load', () => { const preloader = document.getElementById('preloader'); preloader.style.opacity = '0'; setTimeout(() => { preloader.style.display = 'none'; }, 500); });
-    const menuToggle = document.getElementById('menuToggle'); const navLinks = document.getElementById('navLinks'); menuToggle.addEventListener('click', () => { navLinks.classList.toggle('active'); });
-    const fadeElements = document.querySelectorAll('.fade-up'); const observer = new IntersectionObserver((entries) => { entries.forEach(entry => { if (entry.isIntersecting) { entry.target.classList.add('appear'); observer.unobserve(entry.target); } }); }, { threshold: 0.1 }); fadeElements.forEach(el => observer.observe(el));
-    document.querySelectorAll('.nav-links a').forEach(link => { link.addEventListener('click', function(e) { if (navLinks.classList.contains('active')) navLinks.classList.remove('active'); }); });
-    const form = document.getElementById('divisionContactForm'); const toastDiv = document.getElementById('toastDivisions'); function showToast(msg, isErr=false) { toastDiv.innerHTML = `<div class="toast-msg" style="background: ${isErr ? '#AA3E2E' : '#2C5F2D'};">${msg}</div>`; setTimeout(() => { toastDiv.innerHTML = ''; }, 4000); }
-    form.addEventListener('submit', (e) => { e.preventDefault(); const name = document.getElementById('nameDiv').value.trim(); const email = document.getElementById('emailDiv').value.trim(); const interest = document.getElementById('divisionInterest').value; if (!name || !email) { showToast("❌ Please fill your name and email.", true); return; } if (!email.includes('@')) { showToast("📧 Please provide a valid email address.", true); return; } showToast(`✨ Thank you ${name}! We received your inquiry for ${interest}. Our division manager will respond within 24h.`, false); form.reset(); });
-    const exploreCoffee = document.querySelector('#coffee-div .btn-learn'); if(exploreCoffee) { exploreCoffee.addEventListener('click', (e) => { e.preventDefault(); showToast("☕ Request our coffee catalog & wholesale pricing — drop us a message using the form below!", false); document.getElementById('divisionInterest').value = 'Coffee'; }); }
-    const constrBtn = document.querySelector('#construction .btn-learn'); if(constrBtn) { constrBtn.addEventListener('click', (e) => { e.preventDefault(); showToast("🏗️ For construction estimates & portfolio, please fill the contact form selecting 'RDG Construction'.", false); document.getElementById('divisionInterest').value = 'Construction'; document.getElementById('divisionContactForm').scrollIntoView({ behavior: 'smooth' }); }); }
-    const importBtn = document.querySelector('#import .btn-outline-dark'); if(importBtn) { importBtn.addEventListener('click', (e) => { e.preventDefault(); showToast("🚢 Import partnership: share your equipment needs via our form (RDG Import selected).", false); document.getElementById('divisionInterest').value = 'Import'; document.getElementById('divisionContactForm').scrollIntoView({ behavior: 'smooth' }); }); }
-    const ctaGroup = document.querySelector('.cta-simple .btn-learn'); if(ctaGroup) { ctaGroup.addEventListener('click', (e) => { e.preventDefault(); showToast("🤝 Group synergy inquiries – our holding team will reach out promptly.", false); document.getElementById('divisionInterest').value = 'General'; document.getElementById('divisionContactForm').scrollIntoView({ behavior: 'smooth' }); }); }
+    
+    // Mobile menu toggle
+    const menuToggle = document.getElementById('menuToggle'); const navLinks = document.getElementById('navLinks'); 
+    menuToggle.addEventListener('click', () => { navLinks.classList.toggle('active'); });
+    document.querySelectorAll('.nav-links a').forEach(link => { link.addEventListener('click', () => { if (navLinks.classList.contains('active')) navLinks.classList.remove('active'); }); });
+    
+    // Scroll animations
+    const fadeElements = document.querySelectorAll('.fade-up'); 
+    const observer = new IntersectionObserver((entries) => { entries.forEach(entry => { if (entry.isIntersecting) { entry.target.classList.add('appear'); observer.unobserve(entry.target); } }); }, { threshold: 0.12 }); 
+    fadeElements.forEach(el => observer.observe(el));
+    
+    // Toast helper
+    const toastDiv = document.getElementById('toastDivisions'); 
+    function showToast(msg, isErr = false) { 
+        toastDiv.innerHTML = `<div class="toast-msg" style="background: ${isErr ? '#AA3E2E' : '#2C5F2D'};">${msg}</div>`; 
+        setTimeout(() => { toastDiv.innerHTML = ''; }, 4000); 
+    }
+    
+    // Form submission handler
+    const form = document.getElementById('divisionContactForm');
+    form.addEventListener('submit', (e) => { 
+        e.preventDefault(); 
+        const name = document.getElementById('nameDiv').value.trim(); 
+        const email = document.getElementById('emailDiv').value.trim(); 
+        const interest = document.getElementById('divisionInterest').options[document.getElementById('divisionInterest').selectedIndex].text;
+        if (!name || !email) { showToast("❌ Please fill your name and email.", true); return; } 
+        if (!email.includes('@') || !email.includes('.')) { showToast("📧 Please provide a valid email address.", true); return; } 
+        showToast(`✨ Thank you ${name}! We received your inquiry for ${interest}. A division manager will respond within 24h.`, false); 
+        form.reset(); 
+    });
+    
+    // Interactive triggers to auto-select division & scroll
+    const constrTrigger = document.getElementById('constrTrigger');
+    const importTrigger = document.getElementById('importTrigger');
+    const coffeeTrigger = document.getElementById('coffeeTrigger');
+    const groupSynergy = document.getElementById('groupSynergyBtn');
+    const interestSelect = document.getElementById('divisionInterest');
+    
+    if(constrTrigger) { constrTrigger.addEventListener('click', (e) => { e.preventDefault(); interestSelect.value = 'Construction'; showToast("🏗️ Construction inquiry: fill the form below for portfolio & estimates.", false); document.getElementById('contactFormDiv').scrollIntoView({ behavior: 'smooth' }); }); }
+    if(importTrigger) { importTrigger.addEventListener('click', (e) => { e.preventDefault(); interestSelect.value = 'Import'; showToast("🚢 Import partnership: please share your equipment needs via the contact form.", false); document.getElementById('contactFormDiv').scrollIntoView({ behavior: 'smooth' }); }); }
+    if(coffeeTrigger) { coffeeTrigger.addEventListener('click', (e) => { e.preventDefault(); interestSelect.value = 'Coffee'; showToast("☕ Request our coffee catalog & wholesale pricing — we'll get back with samples.", false); document.getElementById('contactFormDiv').scrollIntoView({ behavior: 'smooth' }); }); }
+    if(groupSynergy) { groupSynergy.addEventListener('click', (e) => { e.preventDefault(); interestSelect.value = 'General'; showToast("🤝 Group synergy inquiry: our holding team will reach out for strategic talks.", false); document.getElementById('contactFormDiv').scrollIntoView({ behavior: 'smooth' }); }); }
 </script>
 </body>
 </html>
