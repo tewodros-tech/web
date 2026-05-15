@@ -2,13 +2,14 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Events | Hayimi Movement</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>Events | Hayimi Movement - Join Our Impact Gatherings</title>
 
-  <!-- Fonts & Styles -->
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet" />
+  <!-- Fonts & Icons -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+
   <style>
-    /* Base Reset */
     * {
       margin: 0;
       padding: 0;
@@ -16,188 +17,559 @@
     }
 
     body {
-      font-family: 'Montserrat', sans-serif;
-      background-color: #f9f9f9;
-      color: #333;
+      font-family: 'Inter', sans-serif;
+      background: #FEFAF5;
+      color: #1E2A2E;
+      scroll-behavior: smooth;
     }
 
-    a {
-      text-decoration: none;
-      color: inherit;
-    }
+    /* Custom Scroll */
+    ::-webkit-scrollbar { width: 7px; }
+    ::-webkit-scrollbar-track { background: #E6DED3; }
+    ::-webkit-scrollbar-thumb { background: #FF6600; border-radius: 12px; }
 
-    /* Navbar */
+    /* Navbar - Glassmorphic Elegance */
     .navbar {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding: 1rem 2rem;
-      background-color: #fff;
-      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+      padding: 1rem 2.5rem;
+      background: rgba(255, 255, 245, 0.96);
+      backdrop-filter: blur(12px);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.05);
+      border-bottom: 1px solid rgba(255, 102, 0, 0.2);
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 0.7rem;
     }
 
     .logo img {
-      height: 50px;
+      height: 52px;
+      width: auto;
+      transition: transform 0.2s;
+    }
+    .logo img:hover { transform: scale(1.02); }
+    .logo span {
+      font-size: 1.4rem;
+      font-weight: 800;
+      background: linear-gradient(135deg, #002855, #FF6600);
+      background-clip: text;
+      -webkit-background-clip: text;
+      color: transparent;
     }
 
-    nav ul {
+    .nav-links {
       display: flex;
-      gap: 1.5rem;
+      gap: 2rem;
       list-style: none;
+      align-items: center;
     }
-
-    nav a {
-      font-weight: 500;
-      transition: color 0.3s ease;
+    .nav-links a {
+      text-decoration: none;
+      font-weight: 600;
+      color: #2C3E3B;
+      transition: 0.25s;
+      font-size: 0.95rem;
     }
-
-    nav a:hover {
-      color: #0077b6;
+    .nav-links a:hover, .nav-links a.active {
+      color: #FF6600;
     }
-
     .donate-btn {
-      background-color: #ff6600;
-      color: white;
-      padding: 0.5rem 1rem;
-      border-radius: 5px;
-      font-weight: bold;
-      transition: background-color 0.3s ease;
+      background: #FF6600;
+      color: white !important;
+      padding: 0.55rem 1.5rem;
+      border-radius: 40px;
+      font-weight: 700;
+      box-shadow: 0 5px 12px rgba(255,102,0,0.3);
+      transition: all 0.3s ease;
     }
-
     .donate-btn:hover {
-      background-color: #d9480f;
+      background: #E05A00;
+      transform: translateY(-2px);
+      color: white !important;
     }
 
-    /* Hero Section */
-    .hero {
-      background: linear-gradient(to right, #ff6600, #ff9966);
-      color: white;
+    .menu-toggle {
+      display: none;
+      font-size: 1.7rem;
+      background: none;
+      border: none;
+      cursor: pointer;
+      color: #FF6600;
+    }
+
+    /* Hero Section - Events */
+    .events-hero {
+      background: linear-gradient(115deg, #FFE9DA 0%, #FFDCC4 100%);
+      padding: 4rem 2rem 3rem;
       text-align: center;
-      padding: 4rem 2rem;
-    }
-
-    .hero h1 {
-      font-size: 3rem;
-      margin-bottom: 1rem;
-    }
-
-    .hero p {
-      font-size: 1.2rem;
-      max-width: 700px;
-      margin: 0 auto;
-    }
-
-    /* Main Content */
-    .content {
-      max-width: 1000px;
-      margin: 3rem auto;
-      padding: 0 2rem;
-    }
-
-    article {
-      background-color: #fff;
-      padding: 2rem;
-      border-radius: 10px;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+      border-bottom-left-radius: 56px;
+      border-bottom-right-radius: 56px;
       margin-bottom: 2rem;
-      transition: transform 0.3s ease;
+    }
+    .events-hero h1 {
+      font-size: 3.2rem;
+      font-weight: 800;
+      background: linear-gradient(135deg, #BF5000, #FF8433);
+      background-clip: text;
+      -webkit-background-clip: text;
+      color: transparent;
+      letter-spacing: -0.02em;
+    }
+    .events-hero p {
+      font-size: 1.2rem;
+      color: #4F3F2F;
+      max-width: 650px;
+      margin: 0.8rem auto 0;
     }
 
-    article:hover {
-      transform: translateY(-5px);
+    /* main container */
+    .events-container {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 1rem 2rem 4rem;
     }
 
-    article h2 {
-      color: #ff6600;
-      margin-bottom: 1rem;
-    }
-
-    article p {
-      font-size: 1rem;
-      line-height: 1.6;
-      margin-bottom: 1rem;
-    }
-
-    .learn-btn {
+    /* upcoming badge */
+    .section-badge {
       display: inline-block;
-      background-color: #0077b6;
-      color: white;
-      padding: 0.75rem 1.5rem;
-      border-radius: 5px;
-      font-weight: bold;
-      transition: background-color 0.3s ease;
+      background: #FFE1CC;
+      padding: 0.3rem 1.2rem;
+      border-radius: 40px;
+      font-size: 0.8rem;
+      font-weight: 700;
+      color: #BF5000;
+      margin-bottom: 1.5rem;
     }
 
-    .learn-btn:hover {
-      background-color: #023e8a;
+    /* Event Cards Grid */
+    .events-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+      gap: 2rem;
+      margin: 2rem 0 3rem;
     }
-
-    /* Footer */
-    .footer {
-      background-color: #333;
-      color: white;
-      text-align: center;
+    .event-card {
+      background: #FFFFFF;
+      border-radius: 32px;
+      overflow: hidden;
+      transition: all 0.4s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+      box-shadow: 0 15px 35px -12px rgba(0, 0, 0, 0.08);
+      border: 1px solid rgba(255, 102, 0, 0.12);
+    }
+    .event-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 28px 40px -12px rgba(255, 102, 0, 0.25);
+      border-color: rgba(255, 102, 0, 0.3);
+    }
+    .event-img {
+      height: 210px;
+      background-size: cover;
+      background-position: center;
+      position: relative;
+      display: flex;
+      align-items: flex-end;
       padding: 1rem;
-      font-size: 0.9rem;
+    }
+    .event-date-badge {
+      background: #FF6600;
+      color: white;
+      padding: 0.4rem 1rem;
+      border-radius: 40px;
+      font-weight: 700;
+      font-size: 0.8rem;
+      display: inline-block;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    }
+    .event-details {
+      padding: 1.8rem;
+    }
+    .event-details h3 {
+      font-size: 1.6rem;
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+      color: #2D3E3A;
+    }
+    .event-meta {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+      margin: 1rem 0;
+      font-size: 0.85rem;
+      color: #FF6600;
+      font-weight: 500;
+    }
+    .event-meta i {
+      margin-right: 6px;
+    }
+    .event-desc {
+      color: #4F605C;
+      line-height: 1.5;
+      margin: 1rem 0 1.5rem;
+    }
+    .event-btn {
+      background: transparent;
+      border: 2px solid #FF6600;
+      padding: 0.6rem 1.4rem;
+      border-radius: 50px;
+      font-weight: 700;
+      color: #FF6600;
+      transition: 0.25s;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      cursor: pointer;
+      text-decoration: none;
+    }
+    .event-btn:hover {
+      background: #FF6600;
+      color: white;
+      gap: 12px;
     }
 
-    /* Responsive */
-    @media (max-width: 768px) {
-      .hero h1 {
-        font-size: 2rem;
-      }
+    /* Past Events Section */
+    .past-section {
+      margin-top: 3rem;
+      background: #F7F2EA;
+      border-radius: 48px;
+      padding: 2rem 2rem 2rem;
+    }
+    .past-header {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      margin-bottom: 1.5rem;
+    }
+    .past-header h2 {
+      font-size: 1.8rem;
+      font-weight: 700;
+      color: #2D3E3A;
+    }
+    .past-list {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+    .past-item {
+      background: white;
+      border-radius: 60px;
+      padding: 1rem 1.5rem;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      transition: 0.2s;
+      border-left: 5px solid #FFAA66;
+    }
+    .past-item:hover {
+      transform: translateX(6px);
+      box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+    }
+    .past-title {
+      font-weight: 700;
+      font-size: 1.1rem;
+    }
+    .past-date {
+      color: #FF6600;
+      font-weight: 500;
+      font-size: 0.85rem;
+    }
+    .watch-link {
+      color: #0077b6;
+      font-weight: 600;
+      text-decoration: none;
+    }
 
-      nav ul {
+    /* Newsletter CTA */
+    .newsletter-cta {
+      background: linear-gradient(105deg, #002855, #013A6B);
+      border-radius: 48px;
+      padding: 2.5rem;
+      margin: 3rem 0 1rem;
+      text-align: center;
+      color: white;
+    }
+    .newsletter-cta h3 {
+      font-size: 1.7rem;
+    }
+    .newsletter-form {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 0.8rem;
+      margin-top: 1.5rem;
+    }
+    .newsletter-form input {
+      padding: 0.9rem 1.5rem;
+      border-radius: 60px;
+      border: none;
+      width: 280px;
+      font-family: inherit;
+      outline: none;
+    }
+    .newsletter-form button {
+      background: #FF6600;
+      border: none;
+      padding: 0.9rem 2rem;
+      border-radius: 60px;
+      font-weight: 700;
+      color: white;
+      cursor: pointer;
+      transition: 0.2s;
+    }
+    .newsletter-form button:hover {
+      background: #E05A00;
+      transform: scale(1.02);
+    }
+
+    /* footer */
+    .footer {
+      background: #0E1A26;
+      color: #C9D1D9;
+      text-align: center;
+      padding: 2rem 1.5rem;
+      border-top-left-radius: 38px;
+      border-top-right-radius: 38px;
+      margin-top: 2rem;
+    }
+    .social-icons {
+      display: flex;
+      justify-content: center;
+      gap: 1.2rem;
+      margin-top: 1rem;
+    }
+    .social-icons a {
+      background: #253746;
+      width: 38px;
+      height: 38px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      color: #FFEAD2;
+      transition: 0.2s;
+    }
+    .social-icons a:hover {
+      background: #FF6600;
+      transform: translateY(-3px);
+    }
+
+    /* fade animations */
+    .fade-up {
+      opacity: 0;
+      transform: translateY(35px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+    .fade-up.appear {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* responsive */
+    @media (max-width: 850px) {
+      .navbar { padding: 0.8rem 1.5rem; flex-wrap: wrap; }
+      .nav-links {
+        display: none;
         flex-direction: column;
+        width: 100%;
         gap: 1rem;
+        margin-top: 1rem;
+        background: rgba(255,252,245,0.98);
+        border-radius: 28px;
+        padding: 1rem;
       }
-
-      .navbar {
-        flex-direction: column;
-        align-items: flex-start;
-      }
+      .nav-links.show { display: flex; }
+      .menu-toggle { display: block; }
+      .events-hero h1 { font-size: 2.2rem; }
+      .events-grid { grid-template-columns: 1fr; }
     }
   </style>
 </head>
 <body>
 
-  <!-- Header -->
-  <header class="navbar">
-    <div class="logo"><img src="Logo.jpg" alt="Hayimi Logo" /></div>
-    <nav>
-      <ul>
-        <li><a href="index.html">Home</a></li>
-        <li><a href="donate.html" class="donate-btn">Donate Today</a></li>
-      </ul>
-    </nav>
-  </header>
+  <!-- Navigation with full links -->
+  <nav class="navbar">
+    <div class="logo">
+      <img src="Logo.jpg" alt="Hayimi Logo" onerror="this.src='https://placehold.co/300x80/FF6600/white?text=HAYIMI';this.onerror=null;" />
+      <span>Hayimi Movement</span>
+    </div>
+    <button class="menu-toggle" id="mobileMenuBtn" aria-label="Menu"><i class="fas fa-bars"></i></button>
+    <ul class="nav-links" id="navMenu">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="programs.html">Programs</a></li>
+      <li><a href="gallery.html">Gallery</a></li>
+      <li><a href="events.html" class="active">Events</a></li>
+      <li><a href="contact.html">Contact</a></li>
+      <li><a href="donation.html" class="donate-btn">DONATE</a></li>
+    </ul>
+  </nav>
 
-  <!-- Hero Section -->
-  <section class="hero">
-    <h1>Upcoming Events</h1>
-    <p>Join us in celebrating community, culture, and compassion.</p>
+  <!-- Hero Events -->
+  <section class="events-hero fade-up">
+    <h1><i class="fas fa-calendar-alt"></i> Upcoming Events</h1>
+    <p>Celebrate community, culture, and compassion with us — join hands for a better tomorrow.</p>
   </section>
 
-  <!-- Event Listings -->
-  <main class="content">
-    <article>
-      <h2>Pride in the Park</h2>
-      <p>A vibrant celebration of inclusion, joy, and community support. Music, food, and storytelling from local voices.</p>
-      <a href="donate.html" class="learn-btn">Support This Event</a>
-    </article>
+  <div class="events-container">
+    <!-- Upcoming Events Grid -->
+    <div class="fade-up">
+      <span class="section-badge"><i class="fas fa-clock"></i> Mark Your Calendar</span>
+    </div>
+    <div class="events-grid">
+      <!-- Event 1 -->
+      <div class="event-card fade-up">
+        <div class="event-img" style="background-image: url('https://placehold.co/600x400/FFDEC2/FF6600?text=Pride+in+the+Park');">
+          <div class="event-date-badge"><i class="far fa-calendar-alt"></i> June 28, 2025</div>
+        </div>
+        <div class="event-details">
+          <h3>🏳️‍🌈 Pride in the Park</h3>
+          <div class="event-meta"><span><i class="fas fa-map-marker-alt"></i> Central Park, Addis</span><span><i class="fas fa-clock"></i> 10:00 AM - 6:00 PM</span></div>
+          <p class="event-desc">A vibrant celebration of inclusion, joy, and community support. Music, food, storytelling from local voices, and allyship workshops.</p>
+          <a href="donation.html" class="event-btn">Support Event <i class="fas fa-arrow-right"></i></a>
+        </div>
+      </div>
+      <!-- Event 2 -->
+      <div class="event-card fade-up">
+        <div class="event-img" style="background-image: url('https://placehold.co/600x400/FFD6B5/FF6600?text=Healing+Through+Art');">
+          <div class="event-date-badge"><i class="far fa-calendar-alt"></i> July 12, 2025</div>
+        </div>
+        <div class="event-details">
+          <h3>🎨 Healing Through Art</h3>
+          <div class="event-meta"><span><i class="fas fa-map-marker-alt"></i> Hayimi Art Hub</span><span><i class="fas fa-clock"></i> 2:00 PM - 7:00 PM</span></div>
+          <p class="event-desc">Workshops and exhibitions featuring local artists sharing stories of resilience and hope. Open to all ages — art supplies provided.</p>
+          <a href="donation.html" class="event-btn">Fund Art Supplies <i class="fas fa-arrow-right"></i></a>
+        </div>
+      </div>
+      <!-- Event 3 -->
+      <div class="event-card fade-up">
+        <div class="event-img" style="background-image: url('https://placehold.co/600x400/FEE1C6/FF6600?text=Women+Lead+Forum');">
+          <div class="event-date-badge"><i class="far fa-calendar-alt"></i> August 5, 2025</div>
+        </div>
+        <div class="event-details">
+          <h3>👩‍💼 Women Lead Forum</h3>
+          <div class="event-meta"><span><i class="fas fa-map-marker-alt"></i> Bole Medhanealem Hall</span><span><i class="fas fa-clock"></i> 9:30 AM - 4:00 PM</span></div>
+          <p class="event-desc">Empowerment conference with mentorship, skill-building, and networking opportunities for women entrepreneurs and leaders.</p>
+          <a href="donation.html" class="event-btn">Sponsor a Seat <i class="fas fa-arrow-right"></i></a>
+        </div>
+      </div>
+    </div>
 
-    <!-- Future Event Placeholder -->
-    <article>
-      <h2>Healing Through Art</h2>
-      <p>Workshops and exhibitions featuring local artists sharing stories of resilience and hope. Open to all ages.</p>
-      <a href="donate.html" class="learn-btn">Help Fund Art Supplies</a>
-    </article>
-  </main>
+    <!-- Past Events Highlights -->
+    <div class="past-section fade-up">
+      <div class="past-header">
+        <h2><i class="fas fa-history"></i> Past Events Highlights</h2>
+        <span style="color:#FF6600;">Relive the moments</span>
+      </div>
+      <div class="past-list">
+        <div class="past-item">
+          <div><span class="past-title">🌍 Community Clean-Up Drive</span><div class="past-date">March 22, 2025</div></div>
+          <a href="#" class="watch-link">View Gallery →</a>
+        </div>
+        <div class="past-item">
+          <div><span class="past-title">📖 Literacy Festival for Kids</span><div class="past-date">February 10, 2025</div></div>
+          <a href="gallery.html" class="watch-link">See Photos →</a>
+        </div>
+        <div class="past-item">
+          <div><span class="past-title">💧 Water for All Gala</span><div class="past-date">December 5, 2024</div></div>
+          <a href="donation.html" class="watch-link">Support Impact →</a>
+        </div>
+      </div>
+    </div>
 
-  <!-- Footer -->
+    <!-- Newsletter & CTA -->
+    <div class="newsletter-cta fade-up">
+      <h3><i class="fas fa-envelope-open-text"></i> Never miss an event</h3>
+      <p style="margin-top: 0.6rem;">Subscribe to get updates about future events, volunteer opportunities, and impact stories.</p>
+      <form class="newsletter-form" id="newsletterForm">
+        <input type="email" placeholder="Your email address" id="newsEmail" required>
+        <button type="submit">Subscribe <i class="fas fa-paper-plane"></i></button>
+      </form>
+      <div id="newsToast" style="margin-top: 1rem;"></div>
+    </div>
+
+    <!-- Join Volunteer Banner -->
+    <div class="fade-up" style="text-align: center; margin: 2rem 0 0.5rem;">
+      <p style="color:#6F5B47;">Want to host an event or volunteer with us? <strong>Let’s create change together.</strong></p>
+      <a href="contact.html" style="display: inline-block; margin-top: 1rem; background: #002855; color: white; padding: 10px 28px; border-radius: 60px; text-decoration: none; font-weight: 600;"><i class="fas fa-hands-helping"></i> Become a Volunteer</a>
+    </div>
+  </div>
+
   <footer class="footer">
-    <p>&copy; 2025 Hayimi Movement. All rights reserved.</p>
+    <p>&copy; 2025 Hayimi Movement. All rights reserved. | Unity in Action</p>
+    <div class="social-icons">
+      <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+      <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+      <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+      <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+    </div>
   </footer>
 
+  <script>
+    // Mobile menu toggle
+    const mobileBtn = document.getElementById('mobileMenuBtn');
+    const navMenu = document.getElementById('navMenu');
+    if (mobileBtn && navMenu) {
+      mobileBtn.addEventListener('click', () => {
+        navMenu.classList.toggle('show');
+      });
+      const allLinks = navMenu.querySelectorAll('a');
+      allLinks.forEach(link => {
+        link.addEventListener('click', () => {
+          navMenu.classList.remove('show');
+        });
+      });
+    }
+
+    // Newsletter toast subscription simulation
+    const newsForm = document.getElementById('newsletterForm');
+    const newsToastDiv = document.getElementById('newsToast');
+    function showToastMsg(msg, isErr = false) {
+      newsToastDiv.innerHTML = `<div style="background:${isErr ? '#D9534F' : '#28A745'}; color:white; padding: 8px 18px; border-radius:40px; font-size:0.8rem; display:inline-block;">${msg}</div>`;
+      setTimeout(() => { newsToastDiv.innerHTML = ''; }, 3000);
+    }
+    if (newsForm) {
+      newsForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const email = document.getElementById('newsEmail').value.trim();
+        if (!email || !email.includes('@')) {
+          showToastMsg('❌ Please enter a valid email address.', true);
+          return;
+        }
+        showToastMsg(`✨ Thank you! You'll receive event updates at ${email}.`, false);
+        newsForm.reset();
+      });
+    }
+
+    // Scroll fade observer
+    const fadeElements = document.querySelectorAll('.fade-up');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('appear');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12 });
+    fadeElements.forEach(el => observer.observe(el));
+
+    // Additional: Past event watch link
+    const watchLinks = document.querySelectorAll('.watch-link');
+    watchLinks.forEach(link => {
+      link.addEventListener('click', (e) => {
+        if (link.getAttribute('href') === '#') {
+          e.preventDefault();
+          showToastMsg('📸 Gallery page coming soon — explore our impact moments!', false);
+        }
+      });
+    });
+  </script>
 </body>
 </html>
