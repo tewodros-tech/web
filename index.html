@@ -3,111 +3,631 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-    <title>RDG Business Holding | Home - Construction | Import | Premium Coffee</title>
+    <title>RDG Business Holding | Construction | Import | Premium Coffee</title>
+    <!-- Google Fonts & Font Awesome -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;400;500;600;700;800;900&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,500&display=swap" rel="stylesheet">
+    <!-- Swiper JS CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
     <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: 'Inter', sans-serif; background: #FEFCF5; color: #1A1A2E; overflow-x: hidden; }
-        ::-webkit-scrollbar { width: 8px; }
-        ::-webkit-scrollbar-track { background: #E8E2D4; }
-        ::-webkit-scrollbar-thumb { background: #C47A44; border-radius: 10px; }
-        #preloader { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #1A1A2E; display: flex; justify-content: center; align-items: center; z-index: 9999; transition: opacity 0.6s; }
-        .loader-text { color: #C47A44; font-size: 1.8rem; font-weight: 600; letter-spacing: 4px; font-family: 'Playfair Display', serif; }
-        .navbar { position: fixed; top: 20px; left: 50%; transform: translateX(-50%); width: 90%; max-width: 1400px; background: rgba(255, 252, 245, 0.96); backdrop-filter: blur(15px); border-radius: 70px; box-shadow: 0 15px 35px rgba(0,0,0,0.05); z-index: 1000; padding: 0.9rem 2rem; transition: all 0.3s; border: 1px solid rgba(196,122,68,0.15); }
-        .nav-container { display: flex; align-items: center; justify-content: space-between; }
-        .logo a { text-decoration: none; }
-        .logo h1 { font-size: 1.8rem; font-weight: 800; background: linear-gradient(135deg, #2C5F2D, #C47A44); background-clip: text; -webkit-background-clip: text; color: transparent; font-family: 'Playfair Display', serif; }
-        .logo span { font-size: 0.7rem; font-weight: 500; color: #C47A44; display: block; letter-spacing: 1px; }
-        .nav-links { display: flex; gap: 2.5rem; list-style: none; }
-        .nav-links a { text-decoration: none; font-weight: 600; color: #2D2E36; transition: 0.3s; font-size: 0.95rem; }
-        .nav-links a:hover, .nav-links a.active { color: #C47A44; }
-        .menu-icon { display: none; font-size: 1.8rem; cursor: pointer; color: #C47A44; }
-        .container { max-width: 1280px; margin: 0 auto; padding: 0 40px; }
-        section { padding: 100px 0; }
-        .hero { min-height: 100vh; display: flex; align-items: center; background: linear-gradient(125deg, #FFF7ED 0%, #FEE9D6 100%); position: relative; overflow: hidden; }
-        .hero-bg-pattern { position: absolute; top: 0; right: 0; width: 60%; height: 100%; background: radial-gradient(circle at 70% 50%, rgba(196,122,68,0.08) 0%, transparent 70%); }
-        .hero-grid { display: flex; flex-wrap: wrap; align-items: center; gap: 4rem; position: relative; z-index: 2; }
-        .hero-content { flex: 1.2; }
-        .hero-badge { background: #E9D8C8; display: inline-block; padding: 6px 18px; border-radius: 40px; font-size: 0.75rem; font-weight: 700; color: #C47A44; margin-bottom: 1.5rem; }
-        .hero-content h1 { font-size: 4rem; line-height: 1.15; font-weight: 800; margin-bottom: 1.5rem; color: #1E2A2A; font-family: 'Playfair Display', serif; }
-        .hero-highlight { color: #C47A44; }
-        .hero-desc { font-size: 1.15rem; color: #4A4A5A; max-width: 550px; margin-bottom: 2rem; line-height: 1.6; }
-        .btn-group { display: flex; gap: 1rem; flex-wrap: wrap; }
-        .btn { display: inline-flex; align-items: center; gap: 12px; background: #C47A44; color: white; padding: 14px 32px; border-radius: 50px; font-weight: 700; text-decoration: none; transition: all 0.3s ease; border: none; cursor: pointer; box-shadow: 0 8px 20px rgba(196,122,68,0.25); }
-        .btn:hover { background: #A55E2E; transform: translateY(-3px); box-shadow: 0 15px 30px rgba(196,122,68,0.35); }
-        .btn-outline { background: transparent; border: 2px solid #C47A44; color: #C47A44; box-shadow: none; }
-        .btn-outline:hover { background: #C47A44; color: white; }
-        .hero-stats { display: flex; gap: 2.5rem; margin-top: 2.5rem; }
-        .stat-number { font-size: 2rem; font-weight: 800; color: #C47A44; }
-        .hero-image { flex: 0.9; text-align: center; }
-        .hero-image img { max-width: 100%; filter: drop-shadow(0 25px 30px rgba(0,0,0,0.1)); animation: floatAnim 5s ease-in-out infinite; border-radius: 48px; }
-        @keyframes floatAnim { 0% { transform: translateY(0px); } 50% { transform: translateY(-15px); } 100% { transform: translateY(0px); } }
-        .section-title { text-align: center; margin-bottom: 3.5rem; }
-        .section-title h2 { font-size: 2.8rem; font-weight: 800; background: linear-gradient(135deg, #2C5F2D, #C47A44); background-clip: text; -webkit-background-clip: text; color: transparent; font-family: 'Playfair Display', serif; }
-        .section-title p { color: #5A5A70; max-width: 600px; margin: 0.8rem auto 0; }
-        .cards-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(310px, 1fr)); gap: 2rem; }
-        .business-card { background: white; border-radius: 32px; padding: 2.2rem; transition: all 0.4s cubic-bezier(0.2, 0.9, 0.4, 1.1); border: 1px solid rgba(196,122,68,0.12); box-shadow: 0 20px 35px -12px rgba(0,0,0,0.05); }
-        .business-card:hover { transform: translateY(-12px); box-shadow: 0 30px 45px -15px rgba(196,122,68,0.2); border-color: rgba(196,122,68,0.3); }
-        .card-icon { font-size: 2.8rem; color: #C47A44; margin-bottom: 1.2rem; }
-        .business-card h3 { font-size: 1.7rem; font-weight: 700; margin-bottom: 0.8rem; }
-        .tag-list { display: flex; flex-wrap: wrap; gap: 0.6rem; margin-top: 1.2rem; }
-        .tag { background: #F5EDE5; padding: 5px 14px; border-radius: 50px; font-size: 0.7rem; font-weight: 600; color: #C47A44; }
-        .projects-swiper { overflow: hidden; border-radius: 32px; padding: 1rem 0; }
-        .swiper-slide { background: white; border-radius: 28px; overflow: hidden; box-shadow: 0 20px 35px rgba(0,0,0,0.08); }
-        .project-img { height: 280px; background-size: cover; background-position: center; display: flex; align-items: flex-end; padding: 1.5rem; background: linear-gradient(145deg, #E2D4C4, #D6C6B2); }
-        .project-img h4 { color: white; font-weight: 800; text-shadow: 0 2px 5px rgba(0,0,0,0.2); }
-        .project-info { padding: 1.5rem; }
-        .coffee-premium { background: linear-gradient(105deg, #1E2A22, #2A3A2E); border-radius: 48px; padding: 3.5rem; color: #FFF2E4; }
-        .coffee-flex { display: flex; flex-wrap: wrap; gap: 3rem; align-items: center; }
-        .team-grid { display: flex; flex-wrap: wrap; gap: 2rem; justify-content: center; }
-        .team-card { background: white; border-radius: 28px; padding: 1.8rem; width: 240px; text-align: center; transition: 0.3s; box-shadow: 0 10px 25px rgba(0,0,0,0.03); }
-        .team-card:hover { transform: translateY(-6px); }
-        .cta-elegant { background: #F7EDE2; border-radius: 48px; padding: 3.5rem; text-align: center; }
-        input, textarea { background: white; border: 1px solid #E2DCD5; padding: 14px 24px; border-radius: 60px; font-family: inherit; outline: none; transition: 0.2s; width: 100%; }
-        input:focus, textarea:focus { border-color: #C47A44; }
-        footer { background: #0F1419; color: #B5B8C4; padding: 3rem 0; text-align: center; margin-top: 2rem; }
-        .footer-social { margin-top: 1rem; display: flex; justify-content: center; gap: 1rem; }
-        .footer-social a { background: #232B33; width: 38px; height: 38px; display: inline-flex; align-items: center; justify-content: center; border-radius: 50%; color: #FFEAD2; transition: 0.2s; text-decoration: none; }
-        .footer-social a:hover { background: #C47A44; transform: translateY(-3px); }
-        @media (max-width: 880px) { .nav-links { display: none; flex-direction: column; width: 100%; background: white; padding: 1.5rem; border-radius: 28px; margin-top: 1rem; } .nav-links.active { display: flex; } .menu-icon { display: block; } .hero-content h1 { font-size: 2.5rem; } .container { padding: 0 24px; } section { padding: 70px 0; } }
-        .fade-up { opacity: 0; transform: translateY(40px); transition: opacity 0.8s ease, transform 0.8s ease; }
-        .fade-up.appear { opacity: 1; transform: translateY(0); }
-        .toast-msg { position: fixed; bottom: 30px; left: 50%; transform: translateX(-50%); background: #2C5F2D; color: white; padding: 12px 28px; border-radius: 50px; font-weight: 600; z-index: 2000; box-shadow: 0 10px 20px rgba(0,0,0,0.2); animation: fadeUp 0.3s ease; }
-        @keyframes fadeUp { from { opacity: 0; transform: translateX(-50%) translateY(20px); } to { opacity: 1; transform: translateX(-50%) translateY(0); } }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #FFFFFF;
+            color: #1E293B;
+            line-height: 1.5;
+            scroll-behavior: smooth;
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #F1F5F9;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #C47A44;
+            border-radius: 4px;
+        }
+
+        /* Reusable Container */
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* Buttons */
+        .btn-primary {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            background-color: #C47A44;
+            color: white;
+            padding: 14px 32px;
+            border-radius: 50px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            font-size: 0.95rem;
+            box-shadow: 0 4px 12px rgba(196, 122, 68, 0.25);
+        }
+        .btn-primary:hover {
+            background-color: #A55E2E;
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(196, 122, 68, 0.35);
+        }
+        .btn-outline {
+            background: transparent;
+            border: 2px solid #C47A44;
+            color: #C47A44;
+            box-shadow: none;
+        }
+        .btn-outline:hover {
+            background: #C47A44;
+            color: white;
+        }
+
+        /* Navbar */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.96);
+            backdrop-filter: blur(12px);
+            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.05);
+            z-index: 1000;
+            padding: 1rem 0;
+            transition: all 0.3s;
+        }
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .logo a {
+            text-decoration: none;
+        }
+        .logo h1 {
+            font-size: 1.8rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, #2C5F2D, #C47A44);
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
+        }
+        .logo span {
+            font-size: 0.7rem;
+            font-weight: 600;
+            color: #C47A44;
+            display: block;
+            letter-spacing: 1px;
+        }
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+            align-items: center;
+        }
+        .nav-links a {
+            text-decoration: none;
+            font-weight: 600;
+            color: #334155;
+            transition: 0.3s;
+            font-size: 0.95rem;
+        }
+        .nav-links a:hover, .nav-links a.active {
+            color: #C47A44;
+        }
+        .menu-icon {
+            display: none;
+            font-size: 1.8rem;
+            cursor: pointer;
+            color: #C47A44;
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 160px 0 80px;
+            background: linear-gradient(135deg, #FFF7ED 0%, #FEF3E8 100%);
+            position: relative;
+            overflow: hidden;
+        }
+        .hero-grid {
+            display: flex;
+            align-items: center;
+            gap: 3rem;
+            flex-wrap: wrap;
+        }
+        .hero-content {
+            flex: 1;
+        }
+        .hero-badge {
+            background: rgba(196, 122, 68, 0.15);
+            display: inline-block;
+            padding: 6px 16px;
+            border-radius: 40px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            color: #C47A44;
+            margin-bottom: 1.5rem;
+        }
+        .hero-content h1 {
+            font-size: 3.5rem;
+            line-height: 1.2;
+            font-weight: 800;
+            margin-bottom: 1.5rem;
+            color: #1E293B;
+        }
+        .hero-highlight {
+            color: #C47A44;
+        }
+        .hero-desc {
+            font-size: 1.1rem;
+            color: #475569;
+            max-width: 550px;
+            margin-bottom: 2rem;
+        }
+        .hero-image {
+            flex: 1;
+            text-align: center;
+        }
+        .hero-image img {
+            max-width: 100%;
+            border-radius: 32px;
+            box-shadow: 0 25px 40px -12px rgba(0, 0, 0, 0.15);
+        }
+
+        /* Section Headers */
+        .section-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+        .section-header h2 {
+            font-size: 2.5rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, #2C5F2D, #C47A44);
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
+            margin-bottom: 0.75rem;
+        }
+        .section-header p {
+            color: #64748B;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* Divisions / Services Cards */
+        .services-section {
+            padding: 80px 0;
+            background: #FFFFFF;
+        }
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
+        }
+        .service-card {
+            background: #FFFFFF;
+            border-radius: 28px;
+            padding: 2rem;
+            transition: all 0.4s ease;
+            border: 1px solid #E2E8F0;
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05);
+        }
+        .service-card:hover {
+            transform: translateY(-8px);
+            border-color: #C47A44;
+            box-shadow: 0 20px 35px -10px rgba(196, 122, 68, 0.2);
+        }
+        .card-icon {
+            font-size: 2.5rem;
+            color: #C47A44;
+            margin-bottom: 1.2rem;
+        }
+        .service-card h3 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 0.75rem;
+        }
+        .service-card p {
+            color: #475569;
+            margin-bottom: 1.5rem;
+        }
+        .feature-tag {
+            display: inline-block;
+            background: #F1F5F9;
+            padding: 4px 12px;
+            border-radius: 50px;
+            font-size: 0.7rem;
+            font-weight: 600;
+            color: #C47A44;
+            margin-right: 0.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        /* Trusted By / Clients Section */
+        .trusted-section {
+            background: #F8FAFC;
+            padding: 60px 0;
+            text-align: center;
+        }
+        .trusted-logos {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 3rem;
+            margin-top: 2rem;
+            align-items: center;
+        }
+        .trusted-logos img {
+            height: 50px;
+            opacity: 0.7;
+            transition: 0.3s;
+            filter: grayscale(100%);
+        }
+        .trusted-logos img:hover {
+            opacity: 1;
+            filter: grayscale(0%);
+        }
+
+        /* Testimonials Swiper */
+        .testimonials-section {
+            padding: 80px 0;
+            background: #FFFFFF;
+        }
+        .testimonial-card {
+            background: #F8FAFC;
+            padding: 2rem;
+            border-radius: 24px;
+            margin: 1rem;
+            text-align: center;
+            border: 1px solid #E2E8F0;
+        }
+        .testimonial-card i {
+            font-size: 2rem;
+            color: #C47A44;
+            margin-bottom: 1rem;
+        }
+        .testimonial-card p {
+            font-style: italic;
+            color: #334155;
+            margin-bottom: 1rem;
+        }
+        .testimonial-card h4 {
+            font-weight: 700;
+            color: #C47A44;
+        }
+
+        /* Stats Banner */
+        .stats-banner {
+            background: linear-gradient(135deg, #1E293B, #0F172A);
+            color: white;
+            padding: 60px 0;
+            text-align: center;
+        }
+        .stats-flex {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            gap: 2rem;
+        }
+        .stat-item .stat-number {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: #C47A44;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            padding: 80px 0;
+            background: #FFF7ED;
+            text-align: center;
+        }
+        .cta-section h3 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        /* Footer */
+        footer {
+            background: #0F172A;
+            color: #94A3B8;
+            padding: 3rem 0;
+            text-align: center;
+        }
+        .footer-social {
+            margin-top: 1.5rem;
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+        }
+        .footer-social a {
+            background: #1E293B;
+            width: 40px;
+            height: 40px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            color: #CBD5E1;
+            transition: 0.2s;
+            text-decoration: none;
+        }
+        .footer-social a:hover {
+            background: #C47A44;
+            color: white;
+            transform: translateY(-3px);
+        }
+
+        /* Responsive */
+        @media (max-width: 880px) {
+            .nav-links {
+                display: none;
+                flex-direction: column;
+                width: 100%;
+                background: white;
+                padding: 1.5rem;
+                border-radius: 24px;
+                margin-top: 1rem;
+                box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+            }
+            .nav-links.active {
+                display: flex;
+            }
+            .menu-icon {
+                display: block;
+            }
+            .hero-content h1 {
+                font-size: 2.2rem;
+            }
+            .hero-grid {
+                flex-direction: column;
+                text-align: center;
+            }
+            .hero-desc {
+                margin-left: auto;
+                margin-right: auto;
+            }
+            .section-header h2 {
+                font-size: 2rem;
+            }
+        }
+
+        /* Animation */
+        .fade-up {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+        .fade-up.appear {
+            opacity: 1;
+            transform: translateY(0);
+        }
     </style>
 </head>
 <body>
-<div id="preloader"><div class="loader-text">RDG <span style="color:#FEFCF5;">|</span> Excellence</div></div>
+
+<!-- Preloader -->
+<div id="preloader" style="position:fixed; top:0; left:0; width:100%; height:100%; background:#FFFFFF; z-index:9999; display:flex; align-items:center; justify-content:center;">
+    <div class="loader-text" style="color:#C47A44; font-size:1.5rem;">Loading Excellence...</div>
+</div>
+
+<!-- Navbar -->
 <nav class="navbar">
     <div class="container nav-container">
-        <div class="logo"><a href="index.html"><h1>RDG<span>BUSINESS HOLDING</span></h1></a></div>
+        <div class="logo">
+            <a href="index.html"><h1>RDG<span>BUSINESS HOLDING</span></h1></a>
+        </div>
         <div class="menu-icon" id="menuToggle"><i class="fas fa-bars"></i></div>
         <ul class="nav-links" id="navLinks">
             <li><a href="index.html" class="active">Home</a></li>
-            <li><a href="divisions.html">Divisions</a></li>
-            <li><a href="gallery.html">Gallery</a></li>
+            <li><a href="#divisions">Divisions</a></li>
+            <li><a href="#testimonials">Testimonials</a></li>
             <li><a href="contact.html">Contact</a></li>
         </ul>
     </div>
 </nav>
-<section id="home" class="hero"><div class="hero-bg-pattern"></div><div class="container hero-grid"><div class="hero-content"><div class="hero-badge"><i class="fas fa-crown"></i> SINCE 2010 • ETHIOPIA</div><h1>Building <span class="hero-highlight">landscapes</span>, importing <span class="hero-highlight">innovation</span>, roasting <span class="hero-highlight">legacy</span>.</h1><p class="hero-desc">RDG Business Holding — a diversified group excelling in construction, global imports, and premium Ethiopian coffee.</p><div class="btn-group"><a href="#coffee" class="btn">Discover Coffee <i class="fas fa-arrow-right"></i></a><a href="divisions.html" class="btn btn-outline">Explore Divisions</a></div><div class="hero-stats"><div><span class="stat-number">15+</span><br>Years</div><div><span class="stat-number">120+</span><br>Projects</div><div><span class="stat-number">3</span><br>Divisions</div></div></div><div class="hero-image"><img src="https://placehold.co/550x500/FEF3E4/C47A44?text=RDG+Group+Visual&font=playfair" alt="RDG"></div></div></section>
-<section id="divisions"><div class="container"><div class="section-title fade-up"><h2>Our Core Divisions</h2><p>Integrated excellence across three dynamic sectors.</p></div><div class="cards-grid"><div class="business-card fade-up"><div class="card-icon"><i class="fas fa-hard-hat"></i></div><h3>RDG Construction</h3><p>General contractor specialized in landscape architecture, outdoor development, finishing works, and residential buildings.</p><div class="tag-list"><span class="tag">Landscaping</span><span class="tag">Hardscape</span><span class="tag">Project Mgmt</span></div></div><div class="business-card fade-up"><div class="card-icon"><i class="fas fa-ship"></i></div><h3>RDG Import</h3><p>Strategic import of electrical equipment, coffee lab instruments, and commercial coffee roasting machinery from global brands.</p><div class="tag-list"><span class="tag">Electrical Gear</span><span class="tag">Lab Tech</span><span class="tag">Roasters</span></div></div><div class="business-card fade-up"><div class="card-icon"><i class="fas fa-mug-hot"></i></div><h3>RDG Coffee (New)</h3><p>Launching a third division: roasting, branding & supplying high-quality Ethiopian coffee to local and international markets.</p><div class="tag-list"><span class="tag">Specialty Grade</span><span class="tag">Direct Export</span><span class="tag">Roastery</span></div></div></div><div style="text-align: center; margin-top: 3rem;"><a href="divisions.html" class="btn" style="background: #C47A44;">View All Divisions Details <i class="fas fa-arrow-right"></i></a></div></div></section>
-<section id="portfolio"><div class="container"><div class="section-title fade-up"><h2>Signature Projects</h2><p>Where vision meets craftsmanship</p></div><div class="swiper projects-swiper fade-up"><div class="swiper-wrapper"><div class="swiper-slide"><div class="project-img" style="background-image: url('https://placehold.co/600x400/E2D4C4/C47A44?text=East+Africa+Bottling');"><h4>East Africa Bottling Co.</h4></div><div class="project-info"><p>Recreational landscape, fertile soil supply, organic compost management for factory workers.</p></div></div><div class="swiper-slide"><div class="project-img" style="background-image: url('https://placehold.co/600x400/D6C6B2/C47A44?text=National+Cement');"><h4>National Cement - Lemli</h4></div><div class="project-info"><p>311,000m² green area, rehabilitation of mining zones, post-plantation care.</p></div></div><div class="swiper-slide"><div class="project-img" style="background-image: url('https://placehold.co/600x400/CBBAA2/C47A44?text=Tryst+Hotel');"><h4>Tryst Boutique Hotel</h4></div><div class="project-info"><p>Upcoming luxury resort landscaping & project management in Debrezeyit.</p></div></div><div class="swiper-slide"><div class="project-img" style="background-image: url('https://placehold.co/600x400/BFA88A/C47A44?text=G+3+Residence');"><h4>G+3+B Residence</h4></div><div class="project-info"><p>High-end design & build for Ato Wassihun Adoshe.</p></div></div></div><div class="swiper-pagination" style="position: relative; margin-top: 20px;"></div></div></div></section>
-<section id="coffee"><div class="container"><div class="coffee-premium fade-up"><div class="coffee-flex"><div style="flex:1.2"><div class="hero-badge" style="background:#2E4238; color:#F0B87A;"><i class="fas fa-seedling"></i> Third Division Launch</div><h2 style="color:#FAE6CF; font-size:2rem; margin: 1rem 0;">RDG Coffee Roastery & Supply</h2><p style="color:#DDD2C4; margin-bottom:1.5rem;">From the highlands of Ethiopia to the world. We are establishing a state-of-the-art coffee roasting, branding, and export division. Offering traceable single-origin lots, commercial roasters, and private label solutions.</p><ul style="margin-bottom:1.8rem; list-style:none;"><li><i class="fas fa-check-circle" style="color:#F0B87A;"></i> Direct trade with Ethiopian farmers</li><li><i class="fas fa-check-circle" style="color:#F0B87A;"></i> Commercial & sample roasters (import synergy)</li><li><i class="fas fa-check-circle" style="color:#F0B87A;"></i> Custom branding for global cafes</li><li><i class="fas fa-check-circle" style="color:#F0B87A;"></i> Quality lab & export logistics</li></ul><a href="contact.html" class="btn" style="background:#F0B87A; color:#1E2A22;">Request Catalog <i class="fas fa-arrow-right"></i></a></div><div style="flex:0.7; text-align:center;"><i class="fas fa-mug-hot" style="font-size: 7rem; color:#F0B87A; opacity:0.9;"></i></div></div></div></div></section>
-<section><div class="container"><div class="section-title fade-up"><h2>Expert Team</h2><p>Architects, engineers & coffee specialists.</p></div><div class="team-grid"><div class="team-card fade-up"><i class="fas fa-leaf" style="font-size:2rem; color:#C47A44;"></i><h4>Zenebech Chane</h4><p>Landscape Architect · 10+ yrs</p></div><div class="team-card fade-up"><i class="fas fa-drafting-compass" style="font-size:2rem; color:#C47A44;"></i><h4>Haftom G/yesus</h4><p>Architect & Urban Planner</p></div><div class="team-card fade-up"><i class="fas fa-hard-hat" style="font-size:2rem; color:#C47A44;"></i><h4>Amanuel Girma</h4><p>Structural Engineer · MSc</p></div><div class="team-card fade-up"><i class="fas fa-water" style="font-size:2rem; color:#C47A44;"></i><h4>Frehiwat Wondu</h4><p>Plumbing & Fire Safety</p></div></div></div></section>
-<section id="contact"><div class="container"><div class="cta-elegant fade-up"><h2 style="font-size: 2rem; color:#2C5F2D;">Let's shape the future together</h2><p style="margin-bottom: 2rem;">Construction partnerships, import inquiries, or coffee wholesale — we'd love to hear from you.</p><form id="contactForm" style="max-width: 550px; margin: 0 auto; display: flex; flex-direction: column; gap: 1rem;"><div style="display: flex; gap: 1rem; flex-wrap: wrap;"><input type="text" id="fullName" placeholder="Full name" required style="flex:1;"><input type="email" id="emailAddr" placeholder="Email address" required style="flex:1;"></div><textarea id="msgContent" rows="3" placeholder="Tell us about your project or coffee interest..." style="border-radius: 28px;"></textarea><button type="submit" class="btn" style="background:#C47A44; align-self: center;">Send Message <i class="fas fa-paper-plane"></i></button></form><div id="liveToast" style="margin-top: 1rem;"></div><div style="margin-top: 2rem; font-size: 0.9rem; color:#3A3A44;"><i class="fas fa-map-marker-alt"></i> Addis Ababa, Bole Sub City &nbsp;|&nbsp; 📞 +251913662154 &nbsp;|&nbsp; ✉ rdg.construction2016@gmail.com</div></div></div></section>
-<footer><div class="container"><div style="margin-bottom: 1rem;"><h3 style="color:#F0B87A;">RDG Business Holding</h3></div><p>© 2025 RDG Business Holding — Construction | Import | Ethiopian Coffee Roastery</p><div class="footer-social"><a href="#"><i class="fab fa-linkedin-in"></i></a><a href="#"><i class="fab fa-instagram"></i></a><a href="#"><i class="fab fa-twitter"></i></a></div></div></footer>
+
+<!-- Hero Section -->
+<section class="hero">
+    <div class="container hero-grid">
+        <div class="hero-content fade-up">
+            <div class="hero-badge"><i class="fas fa-chart-line"></i> Industry Leader Since 2010</div>
+            <h1>Building <span class="hero-highlight">Landscapes</span>, Importing <span class="hero-highlight">Innovation</span>, Roasting <span class="hero-highlight">Legacy</span>.</h1>
+            <p class="hero-desc">RDG Business Holding — a diversified group excelling in construction, global imports, and premium Ethiopian coffee. Trusted by industry leaders across Africa.</p>
+            <div>
+                <a href="#divisions" class="btn-primary">Explore Our Work <i class="fas fa-arrow-right"></i></a>
+            </div>
+        </div>
+        <div class="hero-image fade-up">
+            <img src="https://placehold.co/600x500/FEF3E4/C47A44?text=RDG+Group+Visual&font=playfair" alt="RDG Group">
+        </div>
+    </div>
+</section>
+
+<!-- Divisions / Core Services -->
+<section id="divisions" class="services-section">
+    <div class="container">
+        <div class="section-header fade-up">
+            <h2>Our Core Divisions</h2>
+            <p>Integrated excellence across three dynamic sectors — delivering world-class solutions.</p>
+        </div>
+        <div class="cards-grid">
+            <div class="service-card fade-up">
+                <div class="card-icon"><i class="fas fa-hard-hat"></i></div>
+                <h3>RDG Construction</h3>
+                <p>General contractor specialized in landscape architecture, outdoor development, finishing works, and residential buildings.</p>
+                <div>
+                    <span class="feature-tag">Landscaping</span>
+                    <span class="feature-tag">Hardscape</span>
+                    <span class="feature-tag">Project Mgmt</span>
+                </div>
+            </div>
+            <div class="service-card fade-up">
+                <div class="card-icon"><i class="fas fa-ship"></i></div>
+                <h3>RDG Import</h3>
+                <p>Strategic import of electrical equipment, coffee lab instruments, and commercial coffee roasting machinery from global brands.</p>
+                <div>
+                    <span class="feature-tag">Electrical Gear</span>
+                    <span class="feature-tag">Lab Tech</span>
+                    <span class="feature-tag">Roasters</span>
+                </div>
+            </div>
+            <div class="service-card fade-up">
+                <div class="card-icon"><i class="fas fa-mug-hot"></i></div>
+                <h3>RDG Coffee (New)</h3>
+                <p>Launching a third division: roasting, branding & supplying high-quality Ethiopian coffee to local and international markets.</p>
+                <div>
+                    <span class="feature-tag">Specialty Grade</span>
+                    <span class="feature-tag">Direct Export</span>
+                    <span class="feature-tag">Roastery</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Trusted By Section (Similar to reference) -->
+<section class="trusted-section fade-up">
+    <div class="container">
+        <div class="section-header">
+            <h2>Trusted By Industry Leaders</h2>
+            <p>We have been in the market for 15+ years and worked with top enterprises across various industries.</p>
+        </div>
+        <div class="trusted-logos">
+            <img src="https://placehold.co/120x60/E2E8F0/475569?text=Ethio+Telecom" alt="Client">
+            <img src="https://placehold.co/120x60/E2E8F0/475569?text=Dashen+Bank" alt="Client">
+            <img src="https://placehold.co/120x60/E2E8F0/475569?text=Habesha+Brewery" alt="Client">
+            <img src="https://placehold.co/120x60/E2E8F0/475569?text=African+Union" alt="Client">
+            <img src="https://placehold.co/120x60/E2E8F0/475569?text=Ericsson" alt="Client">
+        </div>
+    </div>
+</section>
+
+<!-- Testimonials Swiper Section -->
+<section id="testimonials" class="testimonials-section">
+    <div class="container">
+        <div class="section-header fade-up">
+            <h2>What Our Clients Say</h2>
+            <p>Reviews from our trusted partners across Ethiopia and beyond.</p>
+        </div>
+        <div class="swiper testimonial-swiper fade-up">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide"><div class="testimonial-card"><i class="fas fa-quote-left"></i><p>"RDG Construction delivered outstanding landscaping for our factory. Professional, on-time, and high-quality work."</p><h4>East Africa Bottling Co.</h4></div></div>
+                <div class="swiper-slide"><div class="testimonial-card"><i class="fas fa-quote-left"></i><p>"Their import division provided us with top-tier coffee roasting machines and seamless logistics. Highly recommended."</p><h4>Moyee Coffee Ethiopia</h4></div></div>
+                <div class="swiper-slide"><div class="testimonial-card"><i class="fas fa-quote-left"></i><p>"The team at RDG is professional, responsive, and delivers excellence. A true partner in our growth."</p><h4>National Cement</h4></div></div>
+                <div class="swiper-slide"><div class="testimonial-card"><i class="fas fa-quote-left"></i><p>"RDG Coffee's single-origin beans are exceptional. Their export logistics made international shipping effortless."</p><h4>Noble Cafe UK</h4></div></div>
+            </div>
+            <div class="swiper-pagination"></div>
+        </div>
+    </div>
+</section>
+
+<!-- Stats Banner -->
+<section class="stats-banner fade-up">
+    <div class="container stats-flex">
+        <div class="stat-item"><div class="stat-number">15+</div><div>Years of Excellence</div></div>
+        <div class="stat-item"><div class="stat-number">120+</div><div>Projects Completed</div></div>
+        <div class="stat-item"><div class="stat-number">3</div><div>Core Divisions</div></div>
+        <div class="stat-item"><div class="stat-number">25+</div><div>Global Partners</div></div>
+    </div>
+</section>
+
+<!-- Call to Action -->
+<section class="cta-section fade-up">
+    <div class="container">
+        <h3>Ready to Build Your Vision?</h3>
+        <p style="margin-bottom: 2rem;">Partner with RDG for construction, import solutions, or premium Ethiopian coffee.</p>
+        <a href="contact.html" class="btn-primary">Get in Touch <i class="fas fa-arrow-right"></i></a>
+    </div>
+</section>
+
+<!-- Footer -->
+<footer>
+    <div class="container">
+        <h3 style="color:#F0B87A; margin-bottom: 1rem;">RDG Business Holding</h3>
+        <p>© 2025 RDG Business Holding — Construction | Import | Ethiopian Coffee Roastery</p>
+        <div class="footer-social">
+            <a href="#"><i class="fab fa-linkedin-in"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+        </div>
+        <p style="margin-top: 1.5rem;">Addis Ababa, Bole Sub City | 📞 +251913662154 | ✉ rdg.construction2016@gmail.com</p>
+    </div>
+</footer>
+
+<!-- Scripts -->
 <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 <script>
-    window.addEventListener('load', () => { const preloader = document.getElementById('preloader'); preloader.style.opacity = '0'; setTimeout(() => { preloader.style.display = 'none'; }, 600); });
-    const swiper = new Swiper('.projects-swiper', { slidesPerView: 1, spaceBetween: 24, pagination: { el: '.swiper-pagination', clickable: true }, breakpoints: { 768: { slidesPerView: 2 }, 1024: { slidesPerView: 3 } }, autoplay: { delay: 3000, disableOnInteraction: false }, loop: true });
-    const fadeElements = document.querySelectorAll('.fade-up'); const observer = new IntersectionObserver((entries) => { entries.forEach(entry => { if (entry.isIntersecting) { entry.target.classList.add('appear'); observer.unobserve(entry.target); } }); }, { threshold: 0.1 }); fadeElements.forEach(el => observer.observe(el));
-    const menuToggle = document.getElementById('menuToggle'); const navLinksMenu = document.getElementById('navLinks'); menuToggle.addEventListener('click', () => { navLinksMenu.classList.toggle('active'); });
-    document.querySelectorAll('.nav-links a, .btn[href^="#"]').forEach(anchor => { anchor.addEventListener('click', function(e) { const href = this.getAttribute('href'); if (href && href.startsWith('#')) { e.preventDefault(); const targetElem = document.querySelector(href); if (targetElem) targetElem.scrollIntoView({ behavior: 'smooth' }); } if (navLinksMenu.classList.contains('active')) navLinksMenu.classList.remove('active'); }); });
-    const form = document.getElementById('contactForm'); const toastDiv = document.getElementById('liveToast'); function showToast(message, isError = false) { toastDiv.innerHTML = `<div class="toast-msg" style="background: ${isError ? '#B33' : '#2C5F2D'};">${message}</div>`; setTimeout(() => { toastDiv.innerHTML = ''; }, 3500); }
-    form.addEventListener('submit', (e) => { e.preventDefault(); const name = document.getElementById('fullName').value.trim(); const email = document.getElementById('emailAddr').value.trim(); if (!name || !email) { showToast("❌ Please fill in your name and email.", true); return; } if (!email.includes('@') || !email.includes('.')) { showToast("📧 Please enter a valid email address.", true); return; } showToast(`✨ Thank you ${name}! Our team will respond within 24 hours.`, false); form.reset(); });
+    // Preloader
+    window.addEventListener('load', () => {
+        const preloader = document.getElementById('preloader');
+        if(preloader) {
+            preloader.style.opacity = '0';
+            setTimeout(() => preloader.style.display = 'none', 500);
+        }
+    });
+
+    // Mobile Menu Toggle
+    const menuToggle = document.getElementById('menuToggle');
+    const navLinks = document.getElementById('navLinks');
+    if(menuToggle) {
+        menuToggle.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+        });
+    }
+
+    // Close menu on link click
+    document.querySelectorAll('.nav-links a').forEach(link => {
+        link.addEventListener('click', () => {
+            if(navLinks.classList.contains('active')) navLinks.classList.remove('active');
+        });
+    });
+
+    // Fade Up Animation Observer
+    const fadeElements = document.querySelectorAll('.fade-up');
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if(entry.isIntersecting) {
+                entry.target.classList.add('appear');
+                observer.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.1 });
+    fadeElements.forEach(el => observer.observe(el));
+
+    // Initialize Testimonial Swiper
+    const swiper = new Swiper('.testimonial-swiper', {
+        slidesPerView: 1,
+        spaceBetween: 30,
+        loop: true,
+        autoplay: { delay: 4000, disableOnInteraction: false },
+        pagination: { el: '.swiper-pagination', clickable: true, dynamicBullets: true },
+        breakpoints: { 768: { slidesPerView: 2 }, 1024: { slidesPerView: 3 } }
+    });
+
+    // Smooth scroll for anchor links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function(e) {
+            const href = this.getAttribute('href');
+            if(href && href !== '#' && href.startsWith('#')) {
+                e.preventDefault();
+                const target = document.querySelector(href);
+                if(target) target.scrollIntoView({ behavior: 'smooth' });
+            }
+        });
+    });
 </script>
 </body>
 </html>
